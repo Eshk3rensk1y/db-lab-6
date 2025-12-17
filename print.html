@@ -13,21 +13,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="favicon.svg">
-        <link rel="shortcut icon" href="favicon.png">
-        <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
-        <link rel="stylesheet" href="css/print.css" media="print">
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-2459343d.css">
+        <link rel="stylesheet" href="css/chrome-ae938929.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="fonts/fonts.css">
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" id="highlight-css" href="highlight.css">
-        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
-        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
 
         <!-- Custom theme stylesheets -->
 
@@ -37,12 +36,24 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex-9c990c0a.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc.js"></script>
+        <script src="toc-03f192b3.js"></script>
     </head>
     <body>
-    <div id="body-container">
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
             try {
@@ -71,56 +82,59 @@
             html.classList.add("js");
         </script>
 
-        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
             let sidebar = null;
-            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
+                sidebar_toggle.checked = false;
             }
-            sidebar_toggle.checked = sidebar === 'visible';
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
         </script>
 
-        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
             <!-- populated by js -->
             <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
             <noscript>
                 <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
             </noscript>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
             </div>
         </nav>
 
-        <div id="page-wrapper" class="page-wrapper">
+        <div id="mdbook-page-wrapper" class="page-wrapper">
 
             <div class="page">
-                <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
-                            <i class="fa fa-bars"></i>
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
                         </label>
-                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
-                            <i class="fa fa-paint-brush"></i>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
                         </button>
-                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
                         </ul>
-                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
-                            <i class="fa fa-search"></i>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
                         </button>
                     </div>
 
@@ -128,35 +142,40 @@
 
                     <div class="right-buttons">
                         <a href="print.html" title="Print this book" aria-label="Print this book">
-                            <i id="print-button" class="fa fa-print"></i>
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
                         </a>
 
                     </div>
                 </div>
 
-                <div id="search-wrapper" class="hidden">
-                    <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
                     </form>
-                    <div id="searchresults-outer" class="searchresults-outer hidden">
-                        <div id="searchresults-header" class="searchresults-header"></div>
-                        <ul id="searchresults">
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
                         </ul>
                     </div>
                 </div>
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script>
-                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
-                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
-                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
                         link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
                     });
                 </script>
 
-                <div id="content" class="content">
+                <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="Виконали"><a class="header" href="#Виконали">Виконали</a></h1>
+                        <h1 id="виконали"><a class="header" href="#виконали">Виконали</a></h1>
 <p><em>студент 2-го курсу, групи ІО-31</em> <strong>Сергій БИКОВЕЦЬ</strong> <a href="https://t.me/sergeybykovets">Telegram</a></p>
 <p><em>студент 2-го курсу, групи ІО-31</em> <strong>Петро УСТИМЧИК</strong> <a href="https://t.me/pepko0007">Telegram</a></p>
 <p><em>студент 2-го курсу, групи ІО-31</em> <strong>Данило НАГОРНИЙ</strong> <a href="https://t.me/daniilnagornyi">Telegram</a></p>
@@ -165,25 +184,28 @@
 <p><em>студент 2-го курсу, групи ІО-31</em> <strong>Денис ГРИГОРЧУК</strong> <a href="https://t.me/wqqwo">Telegram</a></p>
 <p><em>студент 2-го курсу, групи ІО-31</em> <strong>Артем РЯБЕЦЬ</strong> <a href="https://t.me/arrteeeem">Telegram</a></p>
 <p><em>студент 2-го курсу, групи ІО-31</em> <strong>Радислав МИРКІН</strong> <a href="https://t.me/Ratochk">Telegram</a></p>
-<h1 id="Керівник"><a class="header" href="#Керівник">Керівник</a></h1>
+<h1 id="керівник"><a class="header" href="#керівник">Керівник</a></h1>
 <p><em>доцент кафедри ОТ ФІОТ, к.т.н., доцент</em> <strong>Андрій БОЛДАК</strong></p>
-<p><a href="https://kpi.ua/">НТУУ "КИЇВСЬКИЙ ПОЛІТЕХНІЧНИЙ ІНСТИТУТ імені ІГОРЯ СІКОРСЬКОГО</a></p>
+<p><a href="https://kpi.ua/">НТУУ “КИЇВСЬКИЙ ПОЛІТЕХНІЧНИЙ ІНСТИТУТ імені ІГОРЯ СІКОРСЬКОГО</a></p>
 <p><a href="https://fiot.kpi.ua/">Факультет інформатики та обчислювальної техніки</a></p>
 <p><a href="https://comsys.kpi.ua/">Кафедра обчислювальної техніки</a></p>
 <p>Київ</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="Вступ"><a class="header" href="#Вступ">Вступ</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="вступ"><a class="header" href="#вступ">Вступ</a></h1>
 <p>Сучасне інформаційне середовище створює нові виклики для бізнесу, політики та громадських організацій, оскільки медіа-контент значною мірою впливає на їхню репутацію, діяльність і стратегічні рішення. Мета цієї роботи полягає у розробці системи, яка дозволить автоматизовано збирати, аналізувати та інтерпретувати різні типи медіа-даних, забезпечуючи глибше розуміння громадської думки та інформаційних тенденцій.</p>
 <p>Збільшення обсягів цифрових даних вимагає впровадження сучасних технологій для їх обробки та аналізу. Існуючі системи аналізу медіа-контенту мають обмежену функціональність і часто не підтримують всі типи контенту або не використовують сучасні методи обробки, що може впливати на якість аналізу. Тому необхідно створити універсальний інструмент, здатний забезпечити швидкий і точний аналіз.</p>
 <p>Розроблена система буде універсальна та здатна ефективно обробляти різні типи контенту, використовуючи технології для забезпечення точного аналізу. Результати впровадження включають покращення якості аналізу, скорочення часу на прийняття рішень та оптимізацію роботи з інформацією, що позитивно позначиться на різних сферах діяльності.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="Розроблення-загальних-вимог-до-системи"><a class="header" href="#Розроблення-загальних-вимог-до-системи">Розроблення загальних вимог до системи</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="розроблення-загальних-вимог-до-системи"><a class="header" href="#розроблення-загальних-вимог-до-системи">Розроблення загальних вимог до системи</a></h1>
 <ul>
-<li><a href="./state-of-the-art.html">Аналіз предметної області</a></li>
-<li><a href="./stakeholders-needs.html">Запити зацікавлених осіб</a></li>
+<li><a href="#аналіз-предметної-області">Аналіз предметної області</a></li>
+<li><a href="#запити-зацікавлених-осіб">Запити зацікавлених осіб</a></li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="Аналіз-предметної-області"><a class="header" href="#Аналіз-предметної-області">Аналіз предметної області</a></h1>
-<h2 id="Вступ-1"><a class="header" href="#Вступ-1">Вступ</a></h2>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="аналіз-предметної-області"><a class="header" href="#аналіз-предметної-області">Аналіз предметної області</a></h1>
+<h2 id="вступ-1"><a class="header" href="#вступ-1">Вступ</a></h2>
 <p>Системи аналізу медіа-контенту – це технічні інструменти та програмне забезпечення, що використовуються для збору, моніторингу та аналізу інформації з різних медіа-джерел. Ця система дає змогу впорядковувати різні види контенту, глибше розуміти його значення та вплив на аудиторію, визначати тренди й оцінювати громадську думку. У цьому документі представлено огляд ключових понять, пов’язаних із медіа-контентом, а також розглянуто різні методи аналізу та здійснено порівняння наявних рішень.</p>
-<h2 id="Основні-визначення"><a class="header" href="#Основні-визначення">Основні визначення</a></h2>
+<h2 id="основні-визначення"><a class="header" href="#основні-визначення">Основні визначення</a></h2>
 <p>Визначення термінів разом з можливими джерелами для їх розуміння:</p>
 <ol>
 <li>
@@ -232,14 +254,14 @@
 <p><strong>Розпізнавання емоцій</strong> – технологія визначення емоційного забарвлення контенту на основі аналізу тексту, аудіо та відео.</p>
 </li>
 </ol>
-<h2 id="Підходи-та-способи-вирішення-завдання"><a class="header" href="#Підходи-та-способи-вирішення-завдання">Підходи та способи вирішення завдання</a></h2>
-<h3 id="Моделі"><a class="header" href="#Моделі">Моделі</a></h3>
+<h2 id="підходи-та-способи-вирішення-завдання"><a class="header" href="#підходи-та-способи-вирішення-завдання">Підходи та способи вирішення завдання</a></h2>
+<h3 id="моделі"><a class="header" href="#моделі">Моделі</a></h3>
 <ol>
 <li>
 <p>Модель YOLO (You Only Look Once): YOLO – це потужна модель для об’єктного розпізнавання у відео та зображеннях у реальному часі. Вона швидко та точно визначає об’єкти, використовуючи єдиний нейромережевий підхід до локалізації та класифікації.</p>
 </li>
 <li>
-<p>Модель ResNet (Residual Neural Network): Глибока згорткова нейронна мережа, яка використовується для класифікації та розпізнавання зображень. Вона вирішує проблему градієнтного згасання за допомогою "залишкових" зв’язків між шарами.</p>
+<p>Модель ResNet (Residual Neural Network): Глибока згорткова нейронна мережа, яка використовується для класифікації та розпізнавання зображень. Вона вирішує проблему градієнтного згасання за допомогою “залишкових” зв’язків між шарами.</p>
 </li>
 <li>
 <p>Модель DeepFake Detection (XceptionNet, MesoNet): Ці моделі спеціалізуються на виявленні змінених або синтезованих зображень та відео. Вони аналізують особливості глибокофейкових матеріалів та виявляють ознаки маніпуляцій.</p>
@@ -254,9 +276,9 @@
 <p>Гібридні нейронні мережі (Hybrid Deep Learning Models): Поєднують методи Transformer та CNN для багатомодального аналізу медіа-контенту, що дозволяє одночасно аналізувати текст, зображення та аудіо для комплексного розуміння змісту.</p>
 </li>
 </ol>
-<h3 id="Підходи"><a class="header" href="#Підходи">Підходи</a></h3>
+<h3 id="підходи"><a class="header" href="#підходи">Підходи</a></h3>
 <p>Підходи до аналізу медіа-контенту можуть змінюватися залежно від цілей дослідження та типу контенту. Основними підходами є:</p>
-<h4 id="Лінгвістичний-підхід-до-аналізу-медіа-контенту"><a class="header" href="#Лінгвістичний-підхід-до-аналізу-медіа-контенту"><strong>Лінгвістичний підхід до аналізу медіа-контенту</strong></a></h4>
+<h4 id="лінгвістичний-підхід-до-аналізу-медіа-контенту"><a class="header" href="#лінгвістичний-підхід-до-аналізу-медіа-контенту"><strong>Лінгвістичний підхід до аналізу медіа-контенту</strong></a></h4>
 <p>Цей підхід спрямований на аналіз текстової інформації, представленої у вигляді новин, статей, коментарів у соціальних мережах тощо. Основна увага приділяється розпізнаванню ключових слів, аналізу семантики, виявленню тональності та тематичного моделювання.</p>
 <p>Під час аналізу можуть враховуватися різні аспекти, зокрема:</p>
 <ul>
@@ -266,7 +288,7 @@
 <li>Виявлення фейкових новин за допомогою спеціалізованих алгоритмів машинного навчання.
 Цей підхід широко застосовується у журналістиці, соціологічних дослідженнях, автоматизованому модеруванні контенту та моніторингу громадської думки.</li>
 </ul>
-<h4 id="Візуальний-підхід-до-аналізу-медіа-контенту-Компютерний-зір"><a class="header" href="#Візуальний-підхід-до-аналізу-медіа-контенту-Компютерний-зір"><strong>Візуальний підхід до аналізу медіа-контенту (Комп’ютерний зір)</strong></a></h4>
+<h4 id="візуальний-підхід-до-аналізу-медіа-контенту-компютерний-зір"><a class="header" href="#візуальний-підхід-до-аналізу-медіа-контенту-компютерний-зір"><strong>Візуальний підхід до аналізу медіа-контенту (Комп’ютерний зір)</strong></a></h4>
 <p>Цей метод використовує алгоритми машинного навчання для розпізнавання та аналізу зображень і відео. Його застосовують для автоматичного розпізнавання облич, об’єктів, сцен та інших візуальних елементів контенту.</p>
 <p>Основні етапи аналізу включають:</p>
 <ul>
@@ -276,7 +298,7 @@
 <li>Оцінка емоцій людей за їхніми виразами обличчя.
 Застосовується для забезпечення безпеки, контролю автентичності візуального контенту, реклами та медіааналітики.</li>
 </ul>
-<h4 id="Аудіальний-підхід-до-аналізу-медіа-контенту-Обробка-мовлення-та-аудіо"><a class="header" href="#Аудіальний-підхід-до-аналізу-медіа-контенту-Обробка-мовлення-та-аудіо"><strong>Аудіальний підхід до аналізу медіа-контенту (Обробка мовлення та аудіо)</strong></a></h4>
+<h4 id="аудіальний-підхід-до-аналізу-медіа-контенту-обробка-мовлення-та-аудіо"><a class="header" href="#аудіальний-підхід-до-аналізу-медіа-контенту-обробка-мовлення-та-аудіо"><strong>Аудіальний підхід до аналізу медіа-контенту (Обробка мовлення та аудіо)</strong></a></h4>
 <p>Цей підхід використовується для обробки звукової інформації, такої як мовлення, музика, шумові ефекти. Основна мета – розпізнавання мовлення, ідентифікація мовця, аналіз інтонації та виявлення змін у голосі.</p>
 <p>Основні аспекти аналізу:</p>
 <ul>
@@ -286,52 +308,58 @@
 <li>Виявлення змін у звукових характеристиках для аналізу маніпуляцій з аудіофайлами.
 Цей підхід активно застосовується у голосових помічниках, кібербезпеці, телефонних системах підтримки та криміналістиці.</li>
 </ul>
-<h3 id="Методи-аналізу-медіа-контенту"><a class="header" href="#Методи-аналізу-медіа-контенту"><strong>Методи аналізу медіа-контенту</strong></a></h3>
-<h4 id="Обробка-тексту-за-допомогою-машинного-навчання"><a class="header" href="#Обробка-тексту-за-допомогою-машинного-навчання"><strong>Обробка тексту за допомогою машинного навчання</strong></a></h4>
+<h3 id="методи-аналізу-медіа-контенту"><a class="header" href="#методи-аналізу-медіа-контенту"><strong>Методи аналізу медіа-контенту</strong></a></h3>
+<h4 id="обробка-тексту-за-допомогою-машинного-навчання"><a class="header" href="#обробка-тексту-за-допомогою-машинного-навчання"><strong>Обробка тексту за допомогою машинного навчання</strong></a></h4>
 <p>Використання алгоритмів, таких як нейронні мережі, метод опорних векторів (SVM) та наївний Баєсів класифікатор для класифікації текстів, аналізу настроїв та тематичного групування. Дозволяє автоматизовано обробляти великі масиви текстових даних, що використовується у журналістиці, маркетингових дослідженнях та модерації контенту.</p>
-<h4 id="Аналіз-зображень-та-відео"><a class="header" href="#Аналіз-зображень-та-відео"><strong>Аналіз зображень та відео</strong></a></h4>
+<h4 id="аналіз-зображень-та-відео"><a class="header" href="#аналіз-зображень-та-відео"><strong>Аналіз зображень та відео</strong></a></h4>
 <p>Застосування комп’ютерного зору для ідентифікації об’єктів, розпізнавання осіб, визначення емоцій та автоматичного розпізнавання тексту на зображеннях. Використовується у медіа для виявлення фейкового контенту, аналізу поведінки користувачів, а також у рекламній індустрії для оцінки ефективності візуальних матеріалів.</p>
-<h4 id="Аналіз-аудіо-та-мовлення"><a class="header" href="#Аналіз-аудіо-та-мовлення"><strong>Аналіз аудіо та мовлення</strong></a></h4>
+<h4 id="аналіз-аудіо-та-мовлення"><a class="header" href="#аналіз-аудіо-та-мовлення"><strong>Аналіз аудіо та мовлення</strong></a></h4>
 <p>Використання спектрального аналізу, машинного навчання для класифікації мовлення, ідентифікації емоційного стану та гендерної приналежності мовця. Дозволяє виявляти маніпулятивний контент, аналізувати реакцію аудиторії у політичних та соціальних дослідженнях.</p>
-<h4 id="Візуалізація-та-інтеграція-даних"><a class="header" href="#Візуалізація-та-інтеграція-даних"><strong>Візуалізація та інтеграція даних</strong></a></h4>
+<h4 id="візуалізація-та-інтеграція-даних"><a class="header" href="#візуалізація-та-інтеграція-даних"><strong>Візуалізація та інтеграція даних</strong></a></h4>
 <p>Створення графічних та статистичних візуалізацій для представлення отриманих результатів у зручному форматі. Використовується у звітності, аналітиці соцмереж та медіа-менеджменті для оптимізації контент-стратегії.</p>
-<h3 id="Методи-реалізації-аналізу-контенту"><a class="header" href="#Методи-реалізації-аналізу-контенту"><strong>Методи реалізації аналізу контенту</strong></a></h3>
-<h4 id="Класичний-контент-аналіз"><a class="header" href="#Класичний-контент-аналіз"><strong>Класичний контент-аналіз</strong></a></h4>
+<h3 id="методи-реалізації-аналізу-контенту"><a class="header" href="#методи-реалізації-аналізу-контенту"><strong>Методи реалізації аналізу контенту</strong></a></h3>
+<h4 id="класичний-контент-аналіз"><a class="header" href="#класичний-контент-аналіз"><strong>Класичний контент-аналіз</strong></a></h4>
 <p>Метод, що передбачає кількісну обробку текстового контенту з подальшою інтерпретацією результатів. Його застосовують для виявлення основних тем, частоти появи певних слів або ідей у текстах, а також аналізу тенденцій у медіа-просторі. Широко використовується у соціології та маркетингових дослідженнях.</p>
-<h4 id="Аналіз-тверджень"><a class="header" href="#Аналіз-тверджень"><strong>Аналіз тверджень</strong></a></h4>
+<h4 id="аналіз-тверджень"><a class="header" href="#аналіз-тверджень"><strong>Аналіз тверджень</strong></a></h4>
 <p>Техніка аналізу тексту, що дозволяє виділяти та інтерпретувати оцінювальні судження. Використовується для виявлення тональності висловлювань у публікаціях та їх впливу на суспільну думку, особливо в політичному аналізі та соціальних дослідженнях.</p>
-<h4 id="Аналіз-фреймів-рамковий-аналіз"><a class="header" href="#Аналіз-фреймів-рамковий-аналіз"><strong>Аналіз фреймів (рамковий аналіз)</strong></a></h4>
+<h4 id="аналіз-фреймів-рамковий-аналіз"><a class="header" href="#аналіз-фреймів-рамковий-аналіз"><strong>Аналіз фреймів (рамковий аналіз)</strong></a></h4>
 <p>Спрямований на дослідження того, як різні події та ситуації представлені у медіа та сприймаються аудиторією. Визначає основні наративи, що формують суспільне уявлення про проблему або подію. Використовується у журналістиці, медіа-аналітиці та комунікаційних стратегіях.</p>
-<h4 id="Дискурсивний-аналіз"><a class="header" href="#Дискурсивний-аналіз"><strong>Дискурсивний аналіз</strong></a></h4>
+<h4 id="дискурсивний-аналіз"><a class="header" href="#дискурсивний-аналіз"><strong>Дискурсивний аналіз</strong></a></h4>
 <p>Досліджує структуру текстів, їхній вплив на суспільну думку та взаємозв’язок із соціальними змінами. Використовується для розуміння, як текстові матеріали формують і підтримують певні ідеології та політичні погляди, а також у критичних медіа-дослідженнях.</p>
-<h4 id="Обробка-великих-даних-data-mining"><a class="header" href="#Обробка-великих-даних-data-mining"><strong>Обробка великих даних (Data Mining)</strong></a></h4>
+<h4 id="обробка-великих-даних-data-mining"><a class="header" href="#обробка-великих-даних-data-mining"><strong>Обробка великих даних (Data Mining)</strong></a></h4>
 <p>Методи аналізу великих обсягів даних для виявлення закономірностей та трендів. Застосовується для автоматизованого збору та аналізу даних з різних джерел, таких як соціальні мережі, новинні ресурси та форуми. Використовується в медіа-аналітиці, маркетингових дослідженнях та прогнозуванні тенденцій.</p>
-<h4 id="Аналіз-тексту-text-mining"><a class="header" href="#Аналіз-тексту-text-mining"><strong>Аналіз тексту (Text Mining)</strong></a></h4>
+<h4 id="аналіз-тексту-text-mining"><a class="header" href="#аналіз-тексту-text-mining"><strong>Аналіз тексту (Text Mining)</strong></a></h4>
 <p>Автоматизований аналіз текстових матеріалів для виявлення ключових тем, трендів та значущих взаємозв’язків. Включає алгоритми кластеризації та виявлення ключових слів, що допомагає в розумінні настроїв та тенденцій у медіа. Часто використовується для моніторингу громадської думки.</p>
-<h4 id="Штучний-інтелект-на-основі-правил"><a class="header" href="#Штучний-інтелект-на-основі-правил"><strong>Штучний інтелект на основі правил</strong></a></h4>
+<h4 id="штучний-інтелект-на-основі-правил"><a class="header" href="#штучний-інтелект-на-основі-правил"><strong>Штучний інтелект на основі правил</strong></a></h4>
 <p>Використання визначених правил для класифікації та аналізу медіа-контенту, що особливо ефективно для задач автоматизованого моделювання рішень. Такий підхід часто застосовується у чат-ботах, модерації контенту та розпізнаванні фейкових новин, де важливо забезпечити швидку реакцію на потенційні загрози.</p>
-<h4 id="Розпізнавання-емоцій"><a class="header" href="#Розпізнавання-емоцій"><strong>Розпізнавання емоцій</strong></a></h4>
+<h4 id="розпізнавання-емоцій"><a class="header" href="#розпізнавання-емоцій"><strong>Розпізнавання емоцій</strong></a></h4>
 <p>Технологія аналізу аудіо, відео та тексту для визначення емоційного забарвлення контенту. Використовується у маркетингу для оцінки реакції споживачів, у соціальних дослідженнях для аналізу громадської думки та у психологічних дослідженнях для оцінки емоційного стану людей. Застосовується у створенні персоналізованого контенту та аналізі користувацького досвіду.</p>
 <p>Застосування наведених підходів та методів дозволяє ефективно аналізувати медіа-контент, виявляти тренди та прогнозувати реакцію аудиторії, що є важливим для бізнесу, соціальних досліджень та медіа-індустрії.</p>
-<h2 id="Порівняльна-характеристика-існуючих-засобів-вирішення-завдання"><a class="header" href="#Порівняльна-характеристика-існуючих-засобів-вирішення-завдання">Порівняльна характеристика існуючих засобів вирішення завдання</a></h2>
-<div class="table-wrapper"><table><thead><tr><th>Властивості</th><th>Brandwatch</th><th>Talkwalker</th><th>Sprinklr</th><th>Meltwater</th><th>Hootsuite</th><th>Наша система</th></tr></thead><tbody>
+<h2 id="порівняльна-характеристика-існуючих-засобів-вирішення-завдання"><a class="header" href="#порівняльна-характеристика-існуючих-засобів-вирішення-завдання">Порівняльна характеристика існуючих засобів вирішення завдання</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Властивості</th><th>Brandwatch</th><th>Talkwalker</th><th>Sprinklr</th><th>Meltwater</th><th>Hootsuite</th><th>Наша система</th></tr>
+</thead>
+<tbody>
 <tr><td><strong>Functionality</strong> (Функціональність)</td><td>Моніторинг згадок, оцінка тональності</td><td>Аналіз трендів, виявлення емоцій</td><td>Управління соцмережами, інтеграція з CRM</td><td>Відстеження ЗМІ та соцмереж, аналіз впливу</td><td>Планування контенту</td><td>Прогнозування тіньових трендів, виялення фейкових новин</td></tr>
 <tr><td><strong>Usability</strong> (Зручність)</td><td>Інтуїтивний інтерфейс, гнучкі звіти</td><td>Простий інтерфейс, аналітика в один клік</td><td>Налаштовувані панелі керування</td><td>Гнучкі налаштування аналітики</td><td>Простий drag-and-drop редактор</td><td>AI підказки, авто рекомендації, групування за темою, персоналізовані дашборди</td></tr>
 <tr><td><strong>Reliability</strong> (Надійність)</td><td>Висока точність даних, регулярні оновлення</td><td>Доступ до історичних даних, резервне копіювання</td><td>Захист даних, підтримка великих обсягів інформації</td><td>Дані з офіційних джерел</td><td>Надійність планування публікацій</td><td>Резервне копіювання, автоматична перевірка джерел</td></tr>
 <tr><td><strong>Performance</strong> (Продуктивність)</td><td>Висока швидкість обробки запитів</td><td>Швидке виявлення трендів</td><td>Оптимізоване управління кампаніями</td><td>Висока швидкість аналізу контенту</td><td>Висока швидкість аналізу контенту</td><td>Нейросіткове прогнозування подій</td></tr>
 <tr><td><strong>Supportability</strong> (Підтримка)</td><td>Підтримка 24/7, документація</td><td>Чат, email, навчальні матеріали</td><td>Інтеграція з бізнес-платформами</td><td>Персоналізована підтримка</td><td>Вбудована підтримка та спільнота користувачів</td><td>AI-бот для підтримки, підтримка гуру сайту</td></tr>
-</tbody></table>
+</tbody>
+</table>
 </div>
-<h2 id="Висновки"><a class="header" href="#Висновки">Висновки</a></h2>
+<h2 id="висновки"><a class="header" href="#висновки">Висновки</a></h2>
 <p>Проаналізувавши різні методи та підходи до аналізу медіа-контенту, а також існуючі системи для збору, моніторингу та оцінки інформації, стало очевидно, що сучасні рішення не завжди відповідають усім вимогам ефективності, точності та автоматизації процесів. Попри наявність потужних інструментів, таких як Brandwatch, Talkwalker і Sprinklr, вони мають певні обмеження, зокрема щодо інтеграції з новітніми технологіями та можливостей глибокого аналізу контенту.
 У зв’язку з цим було прийнято рішення про необхідність розробки нової системи аналізу медіа-контенту, яка поєднуватиме переваги існуючих підходів і впроваджуватиме інноваційні функції, а саме прогнозування трендів, виялення фейкових новин,
 AI підказки та бот для підтримки , авто рекомендації та персоналізовані дашборди.</p>
-<h2 id="Посилання"><a class="header" href="#Посилання">Посилання</a></h2>
+<h2 id="посилання"><a class="header" href="#посилання">Посилання</a></h2>
 <ol>
 <li><a href="https://uk.wikipedia.org/wiki/%D0%A1%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0">Система</a></li>
 <li><a href="https://uk.wikipedia.org/wiki/%D0%9C%D0%B5%D0%B4%D1%96%D0%B0">Медіа</a></li>
 <li><a href="https://uk.wikipedia.org/wiki/%D0%9C%D0%B5%D0%B4%D1%96%D0%B0-%D0%BC%D0%BE%D0%BD%D1%96%D1%82%D0%BE%D1%80%D0%B8%D0%BD%D0%B3">Моніторинг</a></li>
-<li><a href="https://uk.wikipedia.org/wiki/%D0%9A%D0%BE%D0%BC%D0%BF%27%D1%8E%D1%82%D0%B5%D1%80%D0%BD%D0%B8%D0%B9_%D0%B7%D1%96%D1%80">Комп'ютерний зір</a></li>
+<li><a href="https://uk.wikipedia.org/wiki/%D0%9A%D0%BE%D0%BC%D0%BF%27%D1%8E%D1%82%D0%B5%D1%80%D0%BD%D0%B8%D0%B9_%D0%B7%D1%96%D1%80">Комп’ютерний зір</a></li>
 <li><a href="https://docs.ultralytics.com/ru/models/yolo-world/">Модель YOLO</a></li>
 <li><a href="https://neurohive.io/ru/vidy-nejrosetej/resnet-34-50-101/">Модель ResNet</a></li>
 <li><a href="https://paperswithcode.com/task/deepfake-detection">Модель DeepFake Detection</a></li>
@@ -347,101 +375,144 @@ AI підказки та бот для підтримки , авто реком�
 <li><a href="https://www.meltwater.com/en">Meltwater</a></li>
 <li><a href="https://www.hootsuite.com/?srsltid=AfmBOor1y13Fmr2kbFWOsiySccB0J2tU-NZ4R87WIP9xw_VtodvU-4zq">Hootsuite</a></li>
 </ol>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="Запити-зацікавлених-осіб"><a class="header" href="#Запити-зацікавлених-осіб">Запити зацікавлених осіб</a></h1>
-<h2 id="Вступ-2"><a class="header" href="#Вступ-2">Вступ</a></h2>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="запити-зацікавлених-осіб"><a class="header" href="#запити-зацікавлених-осіб">Запити зацікавлених осіб</a></h1>
+<h2 id="вступ-2"><a class="header" href="#вступ-2">Вступ</a></h2>
 <p>Цей документ містить аналіз потреб та вимог до системи аналізу медіа-контенту. У ньому розглядаються ключові аспекти збору, обробки та аналізу інформації з різних джерел, зокрема соціальних мереж, новинних порталів та інших медіа-ресурсів.</p>
-<h3 id="Мета"><a class="header" href="#Мета">Мета</a></h3>
+<h3 id="мета"><a class="header" href="#мета">Мета</a></h3>
 <p>Метою розробки системи аналізу медіа-контенту є створення ефективного інструменту для моніторингу, збору та аналізу інформації з різних джерел. Система дозволить визначати ключові тренди, аналізувати вплив медіа на громадську думку та забезпечувати швидке реагування на інформаційні події. Вона сприятиме підвищенню точності ухвалення рішень, запобіганню дезінформації та покращенню якості аналітичних досліджень.</p>
-<h3 id="Контекст"><a class="header" href="#Контекст">Контекст</a></h3>
+<h3 id="контекст"><a class="header" href="#контекст">Контекст</a></h3>
 <p>Цей документ є частиною проєкту зі створення системи аналізу медіа-контенту, яка спрямована на збір, обробку та аналіз інформації з різних медіа-джерел. Він пов’язаний із розробкою інформаційних систем, що використовуються для моніторингу суспільних настроїв, виявлення трендів та оцінки інформаційних потоків. Результати, викладені в документі, можуть бути корисними для журналістики, маркетингу, державного управління та інших сфер, де важлива точна та швидка аналітика даних.</p>
-<h3 id="Основні-визначення-та-скорочення"><a class="header" href="#Основні-визначення-та-скорочення">Основні визначення та скорочення</a></h3>
-<p>Переглянути <a href="state-of-the-art.html#%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%BD%D1%96-%D0%B2%D0%B8%D0%B7%D0%BD%D0%B0%D1%87%D0%B5%D0%BD%D0%BD%D1%8F">Аналіз предметної області - Основні визначення</a></p>
-<h3 id="Посилання-1"><a class="header" href="#Посилання-1">Посилання</a></h3>
-<p>Переглянути <a href="state-of-the-art.html#%D0%BF%D0%BE%D1%81%D0%B8%D0%BB%D0%B0%D0%BD%D0%BD%D1%8F">Аналіз предметної області - Посилання</a></p>
-<h2 id="Короткий-зміст"><a class="header" href="#Короткий-зміст">Короткий зміст</a></h2>
+<h3 id="основні-визначення-та-скорочення"><a class="header" href="#основні-визначення-та-скорочення">Основні визначення та скорочення</a></h3>
+<p>Переглянути <a href="#основні-визначення">Аналіз предметної області - Основні визначення</a></p>
+<h3 id="посилання-1"><a class="header" href="#посилання-1">Посилання</a></h3>
+<p>Переглянути <a href="#посилання">Аналіз предметної області - Посилання</a></p>
+<h2 id="короткий-зміст"><a class="header" href="#короткий-зміст">Короткий зміст</a></h2>
 <ol>
-<li><a href="stakeholders-needs.html#characteristic">Характеристика ділових процесів</a></li>
-<li><a href="stakeholders-needs.html#survey">Короткий огляд продукту</a></li>
-<li><a href="stakeholders-needs.html#functionality">Функціональність</a></li>
-<li><a href="stakeholders-needs.html#practicality">Практичність</a></li>
-<li><a href="stakeholders-needs.html#reliability">Надійність</a></li>
-<li><a href="stakeholders-needs.html#productivity">Продуктивність</a></li>
-<li><a href="stakeholders-needs.html#serviceability">Експлутаційна придатність</a></li>
+<li><a href="#characteristic">Характеристика ділових процесів</a></li>
+<li><a href="#survey">Короткий огляд продукту</a></li>
+<li><a href="#functionality">Функціональність</a></li>
+<li><a href="#practicality">Практичність</a></li>
+<li><a href="#reliability">Надійність</a></li>
+<li><a href="#productivity">Продуктивність</a></li>
+<li><a href="#serviceability">Експлутаційна придатність</a></li>
 </ol>
-<h2 id="Характеристика-ділових-процесів"><a class="header" href="#Характеристика-ділових-процесів">Характеристика ділових процесів <a id="characteristic"></a></a></h2>
+<h2 id="характеристика-ділових-процесів"><a class="header" href="#характеристика-ділових-процесів">Характеристика ділових процесів <a id="characteristic"></a></a></h2>
 <p><strong>Деталізація операційних сценаріїв:</strong></p>
-<hr />
-<div class="table-wrapper"><table><thead><tr><th style="text-align: left"><strong>ID:</strong></th><th style="text-align: left">UserRegistration</th></tr></thead><tbody>
+<hr>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left"><strong>ID:</strong></th><th style="text-align: left">UserRegistration</th></tr>
+</thead>
+<tbody>
 <tr><td style="text-align: left"><strong>НАЗВА:</strong></td><td style="text-align: left">Створення нового облікового запису</td></tr>
 <tr><td style="text-align: left"><strong>УЧАСНИКИ:</strong></td><td style="text-align: left">Користувач, система</td></tr>
 <tr><td style="text-align: left"><strong>ПЕРЕДУМОВИ:</strong></td><td style="text-align: left">Користувач не має облікового запису у системі</td></tr>
 <tr><td style="text-align: left"><strong>РЕЗУЛЬТАТ:</strong></td><td style="text-align: left">Новий обліковий запис користувача</td></tr>
-<tr><td style="text-align: left"><strong>ВИКЛЮЧНІ СИТУАЦІЇ:</strong></td><td style="text-align: left">1. Користувач уже зареєстрований у системі - ExistingAccountError <br/> 2. Користувач не ввів необхідні дані - MissingInformationError <br/> 3. Користувач ввів некоректні дані - InvalidInputError</td></tr>
-<tr><td style="text-align: left"><strong>ОСНОВНИЙ СЦЕНАРІЙ:</strong></td><td style="text-align: left">1. Користувач відкриває сторінку для створення облікового запису <br/> 2. Система виводить необхідні поля <br/> 3. Користувач вводить персональні дані (Електронна пошта та пароль) <br/> 4. Користувач натискає кнопку "Зареєструватися" <br/> 5. Система перевіряє введенні дані <br/> 6. Система створює новий обліковий запис на основі введених даних <br/> 7. Система інформує користувача про успішне створення нового облікового запису</td></tr>
-</tbody></table>
+<tr><td style="text-align: left"><strong>ВИКЛЮЧНІ СИТУАЦІЇ:</strong></td><td style="text-align: left">1. Користувач уже зареєстрований у системі - ExistingAccountError <br /> 2. Користувач не ввів необхідні дані - MissingInformationError <br /> 3. Користувач ввів некоректні дані - InvalidInputError</td></tr>
+<tr><td style="text-align: left"><strong>ОСНОВНИЙ СЦЕНАРІЙ:</strong></td><td style="text-align: left">1. Користувач відкриває сторінку для створення облікового запису <br /> 2. Система виводить необхідні поля <br /> 3. Користувач вводить персональні дані (Електронна пошта та пароль) <br /> 4. Користувач натискає кнопку “Зареєструватися” <br /> 5. Система перевіряє введенні дані <br /> 6. Система створює новий обліковий запис на основі введених даних <br /> 7. Система інформує користувача про успішне створення нового облікового запису</td></tr>
+</tbody>
+</table>
 </div>
-<hr />
-<div class="table-wrapper"><table><thead><tr><th style="text-align: left"><strong>ID:</strong></th><th style="text-align: left">UserLogin</th></tr></thead><tbody>
+<hr>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left"><strong>ID:</strong></th><th style="text-align: left">UserLogin</th></tr>
+</thead>
+<tbody>
 <tr><td style="text-align: left"><strong>НАЗВА:</strong></td><td style="text-align: left">Вхід до облікового запису</td></tr>
 <tr><td style="text-align: left"><strong>УЧАСНИКИ:</strong></td><td style="text-align: left">Користувач, система</td></tr>
 <tr><td style="text-align: left"><strong>ПЕРЕДУМОВИ:</strong></td><td style="text-align: left">Користувач має обліковий запис у системі</td></tr>
 <tr><td style="text-align: left"><strong>РЕЗУЛЬТАТ:</strong></td><td style="text-align: left">Вхід у обліковий запис</td></tr>
-<tr><td style="text-align: left"><strong>ВИКЛЮЧНІ СИТУАЦІЇ:</strong></td><td style="text-align: left">1. Користувач ввів не правильні дані - InfoNotFoundError <br/> 2. Користувач не має облікового запису - NoAccountError <br/> 3. Користувач зробив забагато спроб входу - AccessLimitError</td></tr>
-<tr><td style="text-align: left"><strong>ОСНОВНИЙ СЦЕНАРІЙ:</strong></td><td style="text-align: left">1. Користувач відкриває сторінку для авторизації <br/> 2. Система виводить необхідні поля  <br/> 3. Користувач вводить персональні дані (Електронна пошта та пароль) <br/> 4. Користувач натискає кнопку "Увійти" <br/> 5. Система перевіряє введенні дані <br/> 6. Система авторизує користувача <br/> 7. Система інформує про успішну авторизацію та перенаправляє користувача на сторінку облікового запису</td></tr>
-</tbody></table>
+<tr><td style="text-align: left"><strong>ВИКЛЮЧНІ СИТУАЦІЇ:</strong></td><td style="text-align: left">1. Користувач ввів не правильні дані - InfoNotFoundError <br /> 2. Користувач не має облікового запису - NoAccountError <br /> 3. Користувач зробив забагато спроб входу - AccessLimitError</td></tr>
+<tr><td style="text-align: left"><strong>ОСНОВНИЙ СЦЕНАРІЙ:</strong></td><td style="text-align: left">1. Користувач відкриває сторінку для авторизації <br /> 2. Система виводить необхідні поля  <br /> 3. Користувач вводить персональні дані (Електронна пошта та пароль) <br /> 4. Користувач натискає кнопку “Увійти” <br /> 5. Система перевіряє введенні дані <br /> 6. Система авторизує користувача <br /> 7. Система інформує про успішну авторизацію та перенаправляє користувача на сторінку облікового запису</td></tr>
+</tbody>
+</table>
 </div>
-<hr />
-<div class="table-wrapper"><table><thead><tr><th style="text-align: left"><strong>ID:</strong></th><th style="text-align: left">UserLogout</th></tr></thead><tbody>
+<hr>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left"><strong>ID:</strong></th><th style="text-align: left">UserLogout</th></tr>
+</thead>
+<tbody>
 <tr><td style="text-align: left"><strong>НАЗВА:</strong></td><td style="text-align: left">Вихід з облікового запису</td></tr>
 <tr><td style="text-align: left"><strong>УЧАСНИКИ:</strong></td><td style="text-align: left">Користувач, система</td></tr>
 <tr><td style="text-align: left"><strong>ПЕРЕДУМОВИ:</strong></td><td style="text-align: left">Користувач має обліковий запис та авторизований у нього</td></tr>
 <tr><td style="text-align: left"><strong>РЕЗУЛЬТАТ:</strong></td><td style="text-align: left">Вихід із облікового запису</td></tr>
 <tr><td style="text-align: left"><strong>ВИКЛЮЧНІ СИТУАЦІЇ:</strong></td><td style="text-align: left">Користувач не авторизований у обліковий запис - NoInError</td></tr>
-<tr><td style="text-align: left"><strong>ОСНОВНИЙ СЦЕНАРІЙ:</strong></td><td style="text-align: left">1. Користувач відкриває сторінку облікового запису <br/> 2. Система виводить інформацію облікового запису та інстументи для роботи з ним <br/> 3. Користувач натискає кнопку "Вийти" <br/> 4. Система завершує поточну сесію <br/> 5. Система інформує користувача про успішний вихід з облікового запису та перенаправляє його на головну сторінку</td></tr>
-</tbody></table>
+<tr><td style="text-align: left"><strong>ОСНОВНИЙ СЦЕНАРІЙ:</strong></td><td style="text-align: left">1. Користувач відкриває сторінку облікового запису <br /> 2. Система виводить інформацію облікового запису та інстументи для роботи з ним <br /> 3. Користувач натискає кнопку “Вийти” <br /> 4. Система завершує поточну сесію <br /> 5. Система інформує користувача про успішний вихід з облікового запису та перенаправляє його на головну сторінку</td></tr>
+</tbody>
+</table>
 </div>
-<hr />
-<div class="table-wrapper"><table><thead><tr><th style="text-align: left"><strong>ID:</strong></th><th style="text-align: left">UserRemove</th></tr></thead><tbody>
+<hr>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left"><strong>ID:</strong></th><th style="text-align: left">UserRemove</th></tr>
+</thead>
+<tbody>
 <tr><td style="text-align: left"><strong>НАЗВА:</strong></td><td style="text-align: left">Видалення облікового запису</td></tr>
 <tr><td style="text-align: left"><strong>УЧАСНИКИ:</strong></td><td style="text-align: left">Користувач, система</td></tr>
 <tr><td style="text-align: left"><strong>ПЕРЕДУМОВИ:</strong></td><td style="text-align: left">Користувач має обліковий запис та авторизований у нього</td></tr>
 <tr><td style="text-align: left"><strong>РЕЗУЛЬТАТ:</strong></td><td style="text-align: left">Обліковий запис видалено</td></tr>
 <tr><td style="text-align: left"><strong>ВИКЛЮЧНІ СИТУАЦІЇ:</strong></td><td style="text-align: left">Користувач не має облікового запису - NoAccountError</td></tr>
-<tr><td style="text-align: left"><strong>ОСНОВНИЙ СЦЕНАРІЙ:</strong></td><td style="text-align: left">1. Користувач відкриває сторінку облікового запису <br/> 2. Система виводить інформацію облікового запису та інстументи для роботи з ним <br/> 3. Користувач натискає кнопку "Видалити обліковий запис" <br/> 4. Система видаляє обліковий запис та інформацію про нього <br/> 5. Система інформує користувача про успішне видалення та перенаправляє його на головну сторінку</td></tr>
-</tbody></table>
+<tr><td style="text-align: left"><strong>ОСНОВНИЙ СЦЕНАРІЙ:</strong></td><td style="text-align: left">1. Користувач відкриває сторінку облікового запису <br /> 2. Система виводить інформацію облікового запису та інстументи для роботи з ним <br /> 3. Користувач натискає кнопку “Видалити обліковий запис” <br /> 4. Система видаляє обліковий запис та інформацію про нього <br /> 5. Система інформує користувача про успішне видалення та перенаправляє його на головну сторінку</td></tr>
+</tbody>
+</table>
 </div>
-<hr />
-<div class="table-wrapper"><table><thead><tr><th style="text-align: left"><strong>ID:</strong></th><th style="text-align: left">UserCreateRequest</th></tr></thead><tbody>
+<hr>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left"><strong>ID:</strong></th><th style="text-align: left">UserCreateRequest</th></tr>
+</thead>
+<tbody>
 <tr><td style="text-align: left"><strong>НАЗВА:</strong></td><td style="text-align: left">Створення запиту для аналізу медіа-контенту</td></tr>
 <tr><td style="text-align: left"><strong>УЧАСНИКИ:</strong></td><td style="text-align: left">Користувач, система</td></tr>
 <tr><td style="text-align: left"><strong>ПЕРЕДУМОВИ:</strong></td><td style="text-align: left">Користувач має обліковий запис та авторизований у нього</td></tr>
 <tr><td style="text-align: left"><strong>РЕЗУЛЬТАТ:</strong></td><td style="text-align: left">Запит створено</td></tr>
-<tr><td style="text-align: left"><strong>ВИКЛЮЧНІ СИТУАЦІЇ:</strong></td><td style="text-align: left">1. Користувач не авторизований у обліковий запис - NoInError <br/> 2. Користувач ввів не правильні дані - InfoNotFoundError</td></tr>
-<tr><td style="text-align: left"><strong>ОСНОВНИЙ СЦЕНАРІЙ:</strong></td><td style="text-align: left">1. Користувач натискає кнопку "Створити запит" <br/> 2. Система виводить необхідні поля <br/> 3. Користувач вводить дані про запит <br/> 4. Користувач натискає кнопку "Створити" <br/> 5. Система перевіряє введенні дані<br/> 6. Система створює запит<br/> 7. Система інформує користувача про успішне створення запиту та перенаправляє його на головну сторінку</td></tr>
-</tbody></table>
+<tr><td style="text-align: left"><strong>ВИКЛЮЧНІ СИТУАЦІЇ:</strong></td><td style="text-align: left">1. Користувач не авторизований у обліковий запис - NoInError <br /> 2. Користувач ввів не правильні дані - InfoNotFoundError</td></tr>
+<tr><td style="text-align: left"><strong>ОСНОВНИЙ СЦЕНАРІЙ:</strong></td><td style="text-align: left">1. Користувач натискає кнопку “Створити запит” <br /> 2. Система виводить необхідні поля <br /> 3. Користувач вводить дані про запит <br /> 4. Користувач натискає кнопку “Створити” <br /> 5. Система перевіряє введенні дані<br /> 6. Система створює запит<br /> 7. Система інформує користувача про успішне створення запиту та перенаправляє його на головну сторінку</td></tr>
+</tbody>
+</table>
 </div>
-<hr />
-<div class="table-wrapper"><table><thead><tr><th style="text-align: left"><strong>ID:</strong></th><th style="text-align: left">UserLevelUpdate</th></tr></thead><tbody>
+<hr>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left"><strong>ID:</strong></th><th style="text-align: left">UserLevelUpdate</th></tr>
+</thead>
+<tbody>
 <tr><td style="text-align: left"><strong>НАЗВА:</strong></td><td style="text-align: left">Заміна прав користувача на права адміністратора</td></tr>
 <tr><td style="text-align: left"><strong>УЧАСНИКИ:</strong></td><td style="text-align: left">Адміністратор, користувач, система</td></tr>
 <tr><td style="text-align: left"><strong>ПЕРЕДУМОВИ:</strong></td><td style="text-align: left">Користувач має обліковий запис</td></tr>
 <tr><td style="text-align: left"><strong>РЕЗУЛЬТАТ:</strong></td><td style="text-align: left">Система змінює користувачу права на адміністраторські</td></tr>
-<tr><td style="text-align: left"><strong>ВИКЛЮЧНІ СИТУАЦІЇ:</strong></td><td style="text-align: left">1. Користувач вже має права адміністратора - RoleError <br/>  2. Користувач не має облікового запису - NoAccountError</td></tr>
-<tr><td style="text-align: left"><strong>ОСНОВНИЙ СЦЕНАРІЙ:</strong></td><td style="text-align: left">1. Адміністратор обирає користувача та відкриває сторінку з інструментами для роботи з ним <br/> 2. Система виводить інформацію про користувача та інстументи для роботи з ним <br/> 3. Адміністратор натискає кнопку "Надати права адміністратора" <br/> 4. Система перевіряє права та обліковий запис користувача <br/> 5. Система змінює права <br/> 6. Система інформує адміністратора та користувача про успішну зміну прав</td></tr>
-</tbody></table>
+<tr><td style="text-align: left"><strong>ВИКЛЮЧНІ СИТУАЦІЇ:</strong></td><td style="text-align: left">1. Користувач вже має права адміністратора - RoleError <br />  2. Користувач не має облікового запису - NoAccountError</td></tr>
+<tr><td style="text-align: left"><strong>ОСНОВНИЙ СЦЕНАРІЙ:</strong></td><td style="text-align: left">1. Адміністратор обирає користувача та відкриває сторінку з інструментами для роботи з ним <br /> 2. Система виводить інформацію про користувача та інстументи для роботи з ним <br /> 3. Адміністратор натискає кнопку “Надати права адміністратора” <br /> 4. Система перевіряє права та обліковий запис користувача <br /> 5. Система змінює права <br /> 6. Система інформує адміністратора та користувача про успішну зміну прав</td></tr>
+</tbody>
+</table>
 </div>
-<hr />
-<div class="table-wrapper"><table><thead><tr><th style="text-align: left"><strong>ID:</strong></th><th style="text-align: left">AdminUserRemove</th></tr></thead><tbody>
+<hr>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left"><strong>ID:</strong></th><th style="text-align: left">AdminUserRemove</th></tr>
+</thead>
+<tbody>
 <tr><td style="text-align: left"><strong>НАЗВА:</strong></td><td style="text-align: left">Видалення облікового запису</td></tr>
 <tr><td style="text-align: left"><strong>УЧАСНИКИ:</strong></td><td style="text-align: left">Адміністратор, користувач, система</td></tr>
 <tr><td style="text-align: left"><strong>ПЕРЕДУМОВИ:</strong></td><td style="text-align: left">Користувач має обліковий запис</td></tr>
 <tr><td style="text-align: left"><strong>РЕЗУЛЬТАТ:</strong></td><td style="text-align: left">Обліковий запис видалено</td></tr>
 <tr><td style="text-align: left"><strong>ВИКЛЮЧНІ СИТУАЦІЇ:</strong></td><td style="text-align: left">Користувач не має облікового запису - NoAccountError</td></tr>
-<tr><td style="text-align: left"><strong>ОСНОВНИЙ СЦЕНАРІЙ:</strong></td><td style="text-align: left">1. Адміністратор обирає користувача та відкриває сторінку з інструментами для роботи з ним <br/> 2. Система виводить інформацію облікового запису та інстументи для роботи з ним <br/> 3. Адміністратор натискає кнопку "Видалити обліковий запис" <br/> 4. Система видаляє обліковий запис та інформацію про нього <br/> 5. Система інформує адміністратора про успішне видалення та перенаправляє його на головну сторінку</td></tr>
-</tbody></table>
+<tr><td style="text-align: left"><strong>ОСНОВНИЙ СЦЕНАРІЙ:</strong></td><td style="text-align: left">1. Адміністратор обирає користувача та відкриває сторінку з інструментами для роботи з ним <br /> 2. Система виводить інформацію облікового запису та інстументи для роботи з ним <br /> 3. Адміністратор натискає кнопку “Видалити обліковий запис” <br /> 4. Система видаляє обліковий запис та інформацію про нього <br /> 5. Система інформує адміністратора про успішне видалення та перенаправляє його на головну сторінку</td></tr>
+</tbody>
+</table>
 </div>
-<hr />
-<h2 id="Короткий-огляд-продукту"><a class="header" href="#Короткий-огляд-продукту">Короткий огляд продукту <a id="survey"></a></a></h2>
+<hr>
+<h2 id="короткий-огляд-продукту"><a class="header" href="#короткий-огляд-продукту">Короткий огляд продукту <a id="survey"></a></a></h2>
 <p><strong>Система аналізу медіа-контенту</strong> – це інструмент для автоматизованого збору, обробки та аналізу різноманітних типів медійного вмісту, включаючи тексти, зображення, відео та аудіо, з різних джерел і платформ. Вона дозволяє ефективно опрацьовувати великі обсяги даних, надаючи користувачам можливість глибше розуміти інформаційне середовище, оцінювати його вплив на суспільство, а також виявляти ключові тренди та важливі події у медіа-просторі. Завдяки використанню сучасних алгоритмів аналізу, ця система допомагає швидко знаходити закономірності, визначати маніпулятивний контент та прогнозувати інформаційні тенденції.</p>
 <p><em><strong>Система є корисною для таких типів користувачів:</strong></em></p>
 <ul>
@@ -451,7 +522,7 @@ AI підказки та бот для підтримки , авто реком�
 <li><strong>Бренди та компанії</strong> - допомагає аналізувати відгуки споживачів, виявляти потенційні проблеми та можливості для покращення комунікації з клієнтами.</li>
 <li><strong>Індивідуальні користувачі</strong> - блогери, публіцисти та дослідники можуть використовувати систему для аналізу реакції аудиторії на їхні публікації та пошуку нових ідей.</li>
 </ul>
-<h2 id="Функціональність"><a class="header" href="#Функціональність">Функціональність <a id="functionality"></a></a></h2>
+<h2 id="функціональність"><a class="header" href="#функціональність">Функціональність <a id="functionality"></a></a></h2>
 <p><em><strong>Функціональність для користувачів:</strong></em></p>
 <ul>
 <li>Створення, видалення та керування обліковим записом.</li>
@@ -474,7 +545,7 @@ AI підказки та бот для підтримки , авто реком�
 <li>Моніторинг роботи системи та її адміністрування.</li>
 <li>Управління базами даних.</li>
 </ul>
-<h2 id="Практичність"><a class="header" href="#Практичність">Практичність <a id="practicality"></a></a></h2>
+<h2 id="практичність"><a class="header" href="#практичність">Практичність <a id="practicality"></a></a></h2>
 <ul>
 <li><strong>Ефективність:</strong> Простота використання та швидкий доступ до функцій сприяють оптимальному використанню ресурсів.</li>
 <li><strong>Продуктивність:</strong> Потужні інструменти та зручний інтерфейс підвищують ефективність роботи користувачів.</li>
@@ -487,7 +558,7 @@ AI підказки та бот для підтримки , авто реком�
 <li><strong>Доступність підтримки:</strong> Швидке отримання допомоги від служби підтримки.</li>
 <li><strong>Мінімальне число кроків:</strong> Основні функції доступні без зайвих дій, що спрощує роботу.</li>
 </ul>
-<h2 id="Надійність"><a class="header" href="#Надійність">Надійність <a id="reliability"></a></a></h2>
+<h2 id="надійність"><a class="header" href="#надійність">Надійність <a id="reliability"></a></a></h2>
 <ul>
 <li><strong>Стабільна робота:</strong> Система функціонує безперебійно та надійно, гарантуючи користувачам постійний доступ без збоїв.</li>
 <li><strong>Захист та безпека даних:</strong> Інформація користувачів зберігається та передається у зашифрованому вигляді, що забезпечує її конфіденційність і цілісність.</li>
@@ -498,7 +569,7 @@ AI підказки та бот для підтримки , авто реком�
 <li><strong>Тестування та валідація:</strong> Система проходить ретельне тестування для забезпечення стабільної та безперебійної роботи.</li>
 <li><strong>Обмежений доступ:</strong> Тільки авторизовані користувачі можуть отримати доступ до баз даних, що запобігає несанкціонованому використанню інформації.</li>
 </ul>
-<h2 id="Продуктивність"><a class="header" href="#Продуктивність">Продуктивність <a id="productivity"></a></a></h2>
+<h2 id="продуктивність"><a class="header" href="#продуктивність">Продуктивність <a id="productivity"></a></a></h2>
 <ul>
 <li><strong>Моніторинг та оптимізація:</strong> Постійний контроль та вдосконалення роботи системи для підтримки стабільної продуктивності.</li>
 <li><strong>Швидкість аналізу:</strong> Висока швидкість обробки різних типів медіа-даних забезпечує оперативність отримання результатів.</li>
@@ -508,7 +579,7 @@ AI підказки та бот для підтримки , авто реком�
 <li><strong>Оптимізація алгоритмів:</strong> Система використовує ефективні алгоритми для швидкої індексації, пошуку та аналізу контенту.</li>
 <li><strong>Стабільність при високому навантаженні:</strong> Незалежно від кількості одночасних запитів система забезпечує своєчасне виконання всіх аналітичних операцій.</li>
 </ul>
-<h2 id="Експлуатаційна-придатність"><a class="header" href="#Експлуатаційна-придатність">Експлуатаційна придатність <a id="serviceability"></a></a></h2>
+<h2 id="експлуатаційна-придатність"><a class="header" href="#експлуатаційна-придатність">Експлуатаційна придатність <a id="serviceability"></a></a></h2>
 <ul>
 <li><strong>Інтуїтивний інтерфейс:</strong> Дружній та зрозумілий інтерфейс, що спрощує роботу користувачів і зменшує час на навчання.</li>
 <li><strong>Детальна документація та навчальні матеріали:</strong> Наявність докладної документації та інструкцій для швидкого освоєння системи.</li>
@@ -517,131 +588,169 @@ AI підказки та бот для підтримки , авто реком�
 <li><strong>Швидке оновлення та виправлення помилок:</strong> Регулярні оновлення, патчі та рефакторинг коду для покращення стабільності та функціональності.</li>
 <li><strong>Можливість розширення функціоналу:</strong> Гнучка архітектура системи, що дозволяє легко інтегрувати нові можливості та сервіси без значних змін.</li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="Розроблення-функціональних-вимог-до-системи"><a class="header" href="#Розроблення-функціональних-вимог-до-системи">Розроблення функціональних вимог до системи</a></h1>
-<h2 id="Модель-прецедентів"><a class="header" href="#Модель-прецедентів">Модель прецедентів</a></h2>
-<h3 id="Загальна-схема"><a class="header" href="#Загальна-схема">Загальна схема</a></h3>
-<hr />
-<center>
-<p><img src="//www.plantuml.com/plantuml/png/PP0zJWGn38LxdyBQVg-mMaHBXJG7Y18pHCeFEFPK79xWH1gKwVpvlJpRUJPnB9eJ9FeGb8eSzq_149cyn5e0d9VAk3NYMRw474jimguJW3RohX7U_YpuJlkG-jiRkeRAj5ZUwXwdbcAvYbLbghswnETwq0nUj5Sc9zGjtqfjHdXUy-cWXDjNwDOvHK-BdORh9ASCOCtx_M473KYTx8I1R5XL9gkPJx1juF_lMV_dOGDNmSBqsXtRFAa4pUaN" alt="Діаграма" /></p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="розроблення-функціональних-вимог-до-системи"><a class="header" href="#розроблення-функціональних-вимог-до-системи">Розроблення функціональних вимог до системи</a></h1>
+<h2 id="модель-прецедентів"><a class="header" href="#модель-прецедентів">Модель прецедентів</a></h2>
+<h3 id="загальна-схема"><a class="header" href="#загальна-схема">Загальна схема</a></h3>
+<hr><center>
+<p><img src="/www.plantuml.com/plantuml/png/PP0zJWGn38LxdyBQVg-mMaHBXJG7Y18pHCeFEFPK79xWH1gKwVpvlJpRUJPnB9eJ9FeGb8eSzq_149cyn5e0d9VAk3NYMRw474jimguJW3RohX7U_YpuJlkG-jiRkeRAj5ZUwXwdbcAvYbLbghswnETwq0nUj5Sc9zGjtqfjHdXUy-cWXDjNwDOvHK-BdORh9ASCOCtx_M473KYTx8I1R5XL9gkPJx1juF_lMV_dOGDNmSBqsXtRFAa4pUaN" alt="Діаграма"></p>
 </center>
-<h3 id="Користувач"><a class="header" href="#Користувач">Користувач</a></h3>
-<hr />
-<center>
-<p><img src="//www.plantuml.com/plantuml/png/VP8zJlGm48PxdsAq_QxqRVbf5ItQbcsGgD786I9BYGSyOmGTFmLtu1I8Yeep93SYSLm4hxJTQ9udR_nQtejYqDYr1groW5N_qVyCp_tty3Ay3c_zL_yvlAy01Qw5WZ5HoA8Gh2wivUWLZkYneOwy9gj3vs_-BJIFxPCu0Rw58zKEuS1U_zZRHUhq4xYYnea6LCS-QJ5GeLnoup9hdJ-573NJSJg9x_Y1Sd313e5GQLJk8qcEi0lfmDqT1YVifqAOof4app8QaqBMxRhA5v4N8ItchZE0JRsfvkF1VzZjw579rr9L1NV-70vqbXPmfjjCROcNr3AM7-_7ONedvXS0" alt="Діаграма" /></p>
+<h3 id="користувач"><a class="header" href="#користувач">Користувач</a></h3>
+<hr><center>
+<p><img src="/www.plantuml.com/plantuml/png/VP8zJlGm48PxdsAq_QxqRVbf5ItQbcsGgD786I9BYGSyOmGTFmLtu1I8Yeep93SYSLm4hxJTQ9udR_nQtejYqDYr1groW5N_qVyCp_tty3Ay3c_zL_yvlAy01Qw5WZ5HoA8Gh2wivUWLZkYneOwy9gj3vs_-BJIFxPCu0Rw58zKEuS1U_zZRHUhq4xYYnea6LCS-QJ5GeLnoup9hdJ-573NJSJg9x_Y1Sd313e5GQLJk8qcEi0lfmDqT1YVifqAOof4app8QaqBMxRhA5v4N8ItchZE0JRsfvkF1VzZjw579rr9L1NV-70vqbXPmfjjCROcNr3AM7-_7ONedvXS0" alt="Діаграма"></p>
 </center>
-<h3 id="Адміністратор"><a class="header" href="#Адміністратор">Адміністратор</a></h3>
-<hr />
-<center>
-<p><img src="//www.plantuml.com/plantuml/png/NS_DIWCn4C3nUvvYwBq5zoXbgNZLIw5d6RBJ4aacEX_5nzVTfQp9BV3_9PavgQ6ObnmmMXLucKhYf2PeLK9mfOXAiBie2M2CrTcW8EED2h7j01KA9lvuskpxd1FVmETBGjzEQhhHeNlsZUwKuV8reT6YFFj6bebWWMSgzRuITDd8Q-LhaeAMAaEzjb_6V_1CdnHj7gqX8X12Q5Q7VTwFZysw8eyoXB0AE4o7SHuRdk5uf1yZddGScuekNLtpiEROrIPA7yFfx-0b_m80" alt="Діаграма" /></p>
+<h3 id="адміністратор"><a class="header" href="#адміністратор">Адміністратор</a></h3>
+<hr><center>
+<p><img src="/www.plantuml.com/plantuml/png/NS_DIWCn4C3nUvvYwBq5zoXbgNZLIw5d6RBJ4aacEX_5nzVTfQp9BV3_9PavgQ6ObnmmMXLucKhYf2PeLK9mfOXAiBie2M2CrTcW8EED2h7j01KA9lvuskpxd1FVmETBGjzEQhhHeNlsZUwKuV8reT6YFFj6bebWWMSgzRuITDd8Q-LhaeAMAaEzjb_6V_1CdnHj7gqX8X12Q5Q7VTwFZysw8eyoXB0AE4o7SHuRdk5uf1yZddGScuekNLtpiEROrIPA7yFfx-0b_m80" alt="Діаграма"></p>
 </center>
 <h3 id="userregistration"><a class="header" href="#userregistration">UserRegistration</a></h3>
-<hr />
-<p><img src="//www.plantuml.com/plantuml/png/XLFDxj904B_tAJRrQg9d8GGF73Zu1bxujWbiIRiO3nme5V10R698JOp6y0QrKiL2oolClf6_QPKqAFd3PNPcVXypksswgkEesMHipEaJvNf1H-tffVOffaXlvaPHDvu9-g13Eb3A7KLj9xYH8IXaAFXb8kOK9KXbEX2KqpSweID5X19zfrpGJuheKYZvDGFA-r8Lg3D5yq8DAcY7uX5kjW9q2NFf5Ti0TIZ0a8Cw0CCTxynJPM580hyUKXb506zBfWCE26gC-0BiafaeBQQa5Bqva3oXIH-HN81bnrBWAiK0m3amxqppbMLnZdK8IC2iCVu9X9CR1z9M0-5OerTAF1eEd-9drBiD-amv_Q1JkNkW4QJm_rvlU19i7fgO75RMq0ZgJxeDnfcjDvQhB3bwtklPCwbQZcCxvkDh-ONbkgYsvT1s9XrbsRBik3QqvUlEsEgtvNIcAgM1x0jsoiFj_ruwt60mNXRR-tLxzqYzb9MxvzP80EYL6AoXkXMqhFxiXSCQIwsnexSiHMVjirZwxxKpvmN9NA35GnZgTw18eFs_zvbLt-N3Z_N-Ps9FZIRMWa_fDm00" alt="Діаграма" /></p>
-<div class="table-wrapper"><table><thead><tr><th style="text-align: left"><strong>ID:</strong></th><th style="text-align: left">UserRegistration</th></tr></thead><tbody>
+<hr>
+<p><img src="/www.plantuml.com/plantuml/png/XLFDxj904B_tAJRrQg9d8GGF73Zu1bxujWbiIRiO3nme5V10R698JOp6y0QrKiL2oolClf6_QPKqAFd3PNPcVXypksswgkEesMHipEaJvNf1H-tffVOffaXlvaPHDvu9-g13Eb3A7KLj9xYH8IXaAFXb8kOK9KXbEX2KqpSweID5X19zfrpGJuheKYZvDGFA-r8Lg3D5yq8DAcY7uX5kjW9q2NFf5Ti0TIZ0a8Cw0CCTxynJPM580hyUKXb506zBfWCE26gC-0BiafaeBQQa5Bqva3oXIH-HN81bnrBWAiK0m3amxqppbMLnZdK8IC2iCVu9X9CR1z9M0-5OerTAF1eEd-9drBiD-amv_Q1JkNkW4QJm_rvlU19i7fgO75RMq0ZgJxeDnfcjDvQhB3bwtklPCwbQZcCxvkDh-ONbkgYsvT1s9XrbsRBik3QqvUlEsEgtvNIcAgM1x0jsoiFj_ruwt60mNXRR-tLxzqYzb9MxvzP80EYL6AoXkXMqhFxiXSCQIwsnexSiHMVjirZwxxKpvmN9NA35GnZgTw18eFs_zvbLt-N3Z_N-Ps9FZIRMWa_fDm00" alt="Діаграма"></p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left"><strong>ID:</strong></th><th style="text-align: left">UserRegistration</th></tr>
+</thead>
+<tbody>
 <tr><td style="text-align: left"><strong>НАЗВА:</strong></td><td style="text-align: left">Створення нового облікового запису</td></tr>
 <tr><td style="text-align: left"><strong>УЧАСНИКИ:</strong></td><td style="text-align: left">Користувач, система</td></tr>
 <tr><td style="text-align: left"><strong>ПЕРЕДУМОВИ:</strong></td><td style="text-align: left">Користувач не має облікового запису у системі</td></tr>
 <tr><td style="text-align: left"><strong>РЕЗУЛЬТАТ:</strong></td><td style="text-align: left">Новий обліковий запис користувача</td></tr>
-<tr><td style="text-align: left"><strong>ВИКЛЮЧНІ СИТУАЦІЇ:</strong></td><td style="text-align: left">1. Користувач уже зареєстрований у системі - ExistingAccountError <br/> 2. Користувач не ввів необхідні дані - MissingInformationError <br/> 3. Користувач ввів некоректні дані - InvalidInputError</td></tr>
-<tr><td style="text-align: left"><strong>ОСНОВНИЙ СЦЕНАРІЙ:</strong></td><td style="text-align: left">1. Користувач відкриває сторінку для створення облікового запису <br/> 2. Система виводить необхідні поля <br/> 3. Користувач вводить персональні дані (Електронна пошта та пароль) <br/> 4. Користувач натискає кнопку "Зареєструватися" <br/> 5. Система перевіряє введенні дані <br/> 6. Система створює новий обліковий запис на основі введених даних <br/> 7. Система інформує користувача про успішне створення нового облікового запису</td></tr>
-</tbody></table>
+<tr><td style="text-align: left"><strong>ВИКЛЮЧНІ СИТУАЦІЇ:</strong></td><td style="text-align: left">1. Користувач уже зареєстрований у системі - ExistingAccountError <br /> 2. Користувач не ввів необхідні дані - MissingInformationError <br /> 3. Користувач ввів некоректні дані - InvalidInputError</td></tr>
+<tr><td style="text-align: left"><strong>ОСНОВНИЙ СЦЕНАРІЙ:</strong></td><td style="text-align: left">1. Користувач відкриває сторінку для створення облікового запису <br /> 2. Система виводить необхідні поля <br /> 3. Користувач вводить персональні дані (Електронна пошта та пароль) <br /> 4. Користувач натискає кнопку “Зареєструватися” <br /> 5. Система перевіряє введенні дані <br /> 6. Система створює новий обліковий запис на основі введених даних <br /> 7. Система інформує користувача про успішне створення нового облікового запису</td></tr>
+</tbody>
+</table>
 </div>
-<hr />
+<hr>
 <h3 id="userlogin"><a class="header" href="#userlogin">UserLogin</a></h3>
-<hr />
-<p><img src="//www.plantuml.com/plantuml/png/TLFDpj9G4DtVfxYf6rtfsduXkD34nF04RkG79P7MbB9ZGQa22mB6Q4sCnXXVu5f1i51uXPatyinWOXE11BYTSyxCcRdJ-Y1-5iN3_aipeazqv37jEE49fvIJuzd8A6xkMth76Qsf48PYxwqGHGAW191Qu7jUMNAK2wBKBQXJplYZRr3YspazRUX0RgHfDTqHqXtABYoL08_qWzzelP8pIoS4aDWtrqngdceMI3OmbY1KaeDuePc0EptSfW-qHw42xB6IGDD2FES9ZlZHPwSmz7TygVA5711Kfq97WByI-4dRz-Wx6i_ejr2yA_r-5MDu1X46Lv8Zfno1DRvLZxu9mhXZezxp5x6zrUtUmyVSD6lq6GL_mRrU0zGu572uv9asmOdE8FqxzzNDtMPDTDxZe1ismlXHE0pQ3wCeZ3o1h6ADy46h1I3-1sWSqSvWyAJNxrMHJj2sOaxwULkzQqvr9lzV4JaTtnIDlLRqSAQUPBmMvmJ7ZEV0qylxizGhUHf0SvwWDAjwiD6-JXAX2rk9RG8X4r-w93zHahQYLfEfRwulV_ZArD4kNf0_" alt="Діаграма" /></p>
-<div class="table-wrapper"><table><thead><tr><th style="text-align: left"><strong>ID:</strong></th><th style="text-align: left">UserLogin</th></tr></thead><tbody>
+<hr>
+<p><img src="/www.plantuml.com/plantuml/png/TLFDpj9G4DtVfxYf6rtfsduXkD34nF04RkG79P7MbB9ZGQa22mB6Q4sCnXXVu5f1i51uXPatyinWOXE11BYTSyxCcRdJ-Y1-5iN3_aipeazqv37jEE49fvIJuzd8A6xkMth76Qsf48PYxwqGHGAW191Qu7jUMNAK2wBKBQXJplYZRr3YspazRUX0RgHfDTqHqXtABYoL08_qWzzelP8pIoS4aDWtrqngdceMI3OmbY1KaeDuePc0EptSfW-qHw42xB6IGDD2FES9ZlZHPwSmz7TygVA5711Kfq97WByI-4dRz-Wx6i_ejr2yA_r-5MDu1X46Lv8Zfno1DRvLZxu9mhXZezxp5x6zrUtUmyVSD6lq6GL_mRrU0zGu572uv9asmOdE8FqxzzNDtMPDTDxZe1ismlXHE0pQ3wCeZ3o1h6ADy46h1I3-1sWSqSvWyAJNxrMHJj2sOaxwULkzQqvr9lzV4JaTtnIDlLRqSAQUPBmMvmJ7ZEV0qylxizGhUHf0SvwWDAjwiD6-JXAX2rk9RG8X4r-w93zHahQYLfEfRwulV_ZArD4kNf0_" alt="Діаграма"></p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left"><strong>ID:</strong></th><th style="text-align: left">UserLogin</th></tr>
+</thead>
+<tbody>
 <tr><td style="text-align: left"><strong>НАЗВА:</strong></td><td style="text-align: left">Вхід до облікового запису</td></tr>
 <tr><td style="text-align: left"><strong>УЧАСНИКИ:</strong></td><td style="text-align: left">Користувач, система</td></tr>
 <tr><td style="text-align: left"><strong>ПЕРЕДУМОВИ:</strong></td><td style="text-align: left">Користувач має обліковий запис у системі</td></tr>
 <tr><td style="text-align: left"><strong>РЕЗУЛЬТАТ:</strong></td><td style="text-align: left">Вхід у обліковий запис</td></tr>
-<tr><td style="text-align: left"><strong>ВИКЛЮЧНІ СИТУАЦІЇ:</strong></td><td style="text-align: left">1. Користувач ввів не правильні дані - InfoNotFoundError <br/> 2. Користувач не має облікового запису - NoAccountError <br/> 3. Користувач зробив забагато спроб входу - AccessLimitError</td></tr>
-<tr><td style="text-align: left"><strong>ОСНОВНИЙ СЦЕНАРІЙ:</strong></td><td style="text-align: left">1. Користувач відкриває сторінку для авторизації <br/> 2. Система виводить необхідні поля  <br/> 3. Користувач вводить персональні дані (Електронна пошта та пароль) <br/> 4. Користувач натискає кнопку "Увійти" <br/> 5. Система перевіряє введенні дані <br/> 6. Система авторизує користувача <br/> 7. Система інформує про успішну авторизацію та перенаправляє користувача на сторінку облікового запису</td></tr>
-</tbody></table>
+<tr><td style="text-align: left"><strong>ВИКЛЮЧНІ СИТУАЦІЇ:</strong></td><td style="text-align: left">1. Користувач ввів не правильні дані - InfoNotFoundError <br /> 2. Користувач не має облікового запису - NoAccountError <br /> 3. Користувач зробив забагато спроб входу - AccessLimitError</td></tr>
+<tr><td style="text-align: left"><strong>ОСНОВНИЙ СЦЕНАРІЙ:</strong></td><td style="text-align: left">1. Користувач відкриває сторінку для авторизації <br /> 2. Система виводить необхідні поля  <br /> 3. Користувач вводить персональні дані (Електронна пошта та пароль) <br /> 4. Користувач натискає кнопку “Увійти” <br /> 5. Система перевіряє введенні дані <br /> 6. Система авторизує користувача <br /> 7. Система інформує про успішну авторизацію та перенаправляє користувача на сторінку облікового запису</td></tr>
+</tbody>
+</table>
 </div>
-<hr />
+<hr>
 <h3 id="userlogout"><a class="header" href="#userlogout">UserLogout</a></h3>
-<hr />
-<p><img src="//www.plantuml.com/plantuml/png/XL9DJi906DtFAIRr0Ew543Okt7W72KHDb9fIToo0Ah0ma1Y3YT65DwWeKbfeh_1zD_AzQOmBqhYOzEltyxxttaop5vu5uUtrbUdBY-Gwa4I7Ej98bXBhf6zStHnPUTI5V4dA3bTxicpa20ex528hkNn8XjyKqHBdKt8hQucbSB1HpM3DUxb2LhALkE-W7MGE-0Ih7om1zOxGRD6nBdJsFxW1PbpEKi406hPOiaCwiS3ET6w1I9YypAqjY2Uo1QqAzI3tXcZ4lAHEDJuxW1HEiUUuRzZWLOXxbXXeA_2PQiJvWkjn9g0MmKJKXbHOCrq_xDZWylmYj0T1fstghOQyOjUtPANfLfO8KaYPSLnYZYUES6dJl7xOQd3EE_LFkiT1u0SUKzPqkcrBV58Q_zbRKahtjNDPGRiiMeO85pfrRcqS2RtdSw3bxACyMP4GPoYORXDvytjH9Cj8CbuVfU-zd-fhw8N-ZMb20Xxg3m00" alt="Діаграма" /></p>
-<div class="table-wrapper"><table><thead><tr><th style="text-align: left"><strong>ID:</strong></th><th style="text-align: left">UserLogout</th></tr></thead><tbody>
+<hr>
+<p><img src="/www.plantuml.com/plantuml/png/XL9DJi906DtFAIRr0Ew543Okt7W72KHDb9fIToo0Ah0ma1Y3YT65DwWeKbfeh_1zD_AzQOmBqhYOzEltyxxttaop5vu5uUtrbUdBY-Gwa4I7Ej98bXBhf6zStHnPUTI5V4dA3bTxicpa20ex528hkNn8XjyKqHBdKt8hQucbSB1HpM3DUxb2LhALkE-W7MGE-0Ih7om1zOxGRD6nBdJsFxW1PbpEKi406hPOiaCwiS3ET6w1I9YypAqjY2Uo1QqAzI3tXcZ4lAHEDJuxW1HEiUUuRzZWLOXxbXXeA_2PQiJvWkjn9g0MmKJKXbHOCrq_xDZWylmYj0T1fstghOQyOjUtPANfLfO8KaYPSLnYZYUES6dJl7xOQd3EE_LFkiT1u0SUKzPqkcrBV58Q_zbRKahtjNDPGRiiMeO85pfrRcqS2RtdSw3bxACyMP4GPoYORXDvytjH9Cj8CbuVfU-zd-fhw8N-ZMb20Xxg3m00" alt="Діаграма"></p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left"><strong>ID:</strong></th><th style="text-align: left">UserLogout</th></tr>
+</thead>
+<tbody>
 <tr><td style="text-align: left"><strong>НАЗВА:</strong></td><td style="text-align: left">Вихід з облікового запису</td></tr>
 <tr><td style="text-align: left"><strong>УЧАСНИКИ:</strong></td><td style="text-align: left">Користувач, система</td></tr>
 <tr><td style="text-align: left"><strong>ПЕРЕДУМОВИ:</strong></td><td style="text-align: left">Користувач має обліковий запис та авторизований у нього</td></tr>
 <tr><td style="text-align: left"><strong>РЕЗУЛЬТАТ:</strong></td><td style="text-align: left">Вихід із облікового запису</td></tr>
 <tr><td style="text-align: left"><strong>ВИКЛЮЧНІ СИТУАЦІЇ:</strong></td><td style="text-align: left">Користувач не авторизований у обліковий запис - NoInError</td></tr>
-<tr><td style="text-align: left"><strong>ОСНОВНИЙ СЦЕНАРІЙ:</strong></td><td style="text-align: left">1. Користувач відкриває сторінку облікового запису <br/> 2. Система виводить інформацію облікового запису та інстументи для роботи з ним <br/> 3. Користувач натискає кнопку "Вийти" <br/> 4. Система завершує поточну сесію <br/> 5. Система інформує користувача про успішний вихід з облікового запису та перенаправляє його на головну сторінку</td></tr>
-</tbody></table>
+<tr><td style="text-align: left"><strong>ОСНОВНИЙ СЦЕНАРІЙ:</strong></td><td style="text-align: left">1. Користувач відкриває сторінку облікового запису <br /> 2. Система виводить інформацію облікового запису та інстументи для роботи з ним <br /> 3. Користувач натискає кнопку “Вийти” <br /> 4. Система завершує поточну сесію <br /> 5. Система інформує користувача про успішний вихід з облікового запису та перенаправляє його на головну сторінку</td></tr>
+</tbody>
+</table>
 </div>
-<hr />
+<hr>
 <h3 id="userremove"><a class="header" href="#userremove">UserRemove</a></h3>
-<hr />
-<p><img src="//www.plantuml.com/plantuml/png/ZL9Fxz904BtlfzZKgucUBI5uuC313y5_cy2Mj8lnm46e0K-G4CF1Q8pVe2885bk-mjjlv1iQaMWmFnBQwRmtRtRUR2sspSYEXmCrmGSKxWsERkfcBi4MgLjCr0LNppJMReCTCc50iFTQY59282UGQ1JuYXC_CqPR_h-Xq3WWnHaYc_YARRwKBR37JwGJaVvCQaRMmIMK5JdtLeI5uEPkuvOFaJQXxUeewB-q-b6lzvG_LMbLyP7axpYLfzPy795HQUaMo9bmKzRBl6MdLUL9gofrNlrr4Dl0z9-ts-7Os7eKXP7t-0g_2EAOQCFqmcZOj45eIiQLq32lceEWqp2ZiRs1kgQZvQJgdk7qunEZcUIHGOpcAqV1ISLa3skEiEFad4beVtb3yCUDCzuTpwyYRiKE_vNmXJ__ivJBbd1cM6Z6Kvnft3lasDFUtx9ibRDavPSBtfFD316fIyah6qjAop9PmSwiIFwvLxwwVpd3aQhHKbxWNm00" alt="Діаграма" /></p>
-<div class="table-wrapper"><table><thead><tr><th style="text-align: left"><strong>ID:</strong></th><th style="text-align: left">UserRemove</th></tr></thead><tbody>
+<hr>
+<p><img src="/www.plantuml.com/plantuml/png/ZL9Fxz904BtlfzZKgucUBI5uuC313y5_cy2Mj8lnm46e0K-G4CF1Q8pVe2885bk-mjjlv1iQaMWmFnBQwRmtRtRUR2sspSYEXmCrmGSKxWsERkfcBi4MgLjCr0LNppJMReCTCc50iFTQY59282UGQ1JuYXC_CqPR_h-Xq3WWnHaYc_YARRwKBR37JwGJaVvCQaRMmIMK5JdtLeI5uEPkuvOFaJQXxUeewB-q-b6lzvG_LMbLyP7axpYLfzPy795HQUaMo9bmKzRBl6MdLUL9gofrNlrr4Dl0z9-ts-7Os7eKXP7t-0g_2EAOQCFqmcZOj45eIiQLq32lceEWqp2ZiRs1kgQZvQJgdk7qunEZcUIHGOpcAqV1ISLa3skEiEFad4beVtb3yCUDCzuTpwyYRiKE_vNmXJ__ivJBbd1cM6Z6Kvnft3lasDFUtx9ibRDavPSBtfFD316fIyah6qjAop9PmSwiIFwvLxwwVpd3aQhHKbxWNm00" alt="Діаграма"></p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left"><strong>ID:</strong></th><th style="text-align: left">UserRemove</th></tr>
+</thead>
+<tbody>
 <tr><td style="text-align: left"><strong>НАЗВА:</strong></td><td style="text-align: left">Видалення облікового запису</td></tr>
 <tr><td style="text-align: left"><strong>УЧАСНИКИ:</strong></td><td style="text-align: left">Користувач, система</td></tr>
 <tr><td style="text-align: left"><strong>ПЕРЕДУМОВИ:</strong></td><td style="text-align: left">Користувач має обліковий запис та авторизований у нього</td></tr>
 <tr><td style="text-align: left"><strong>РЕЗУЛЬТАТ:</strong></td><td style="text-align: left">Обліковий запис видалено</td></tr>
 <tr><td style="text-align: left"><strong>ВИКЛЮЧНІ СИТУАЦІЇ:</strong></td><td style="text-align: left">Користувач не має облікового запису - NoAccountError</td></tr>
-<tr><td style="text-align: left"><strong>ОСНОВНИЙ СЦЕНАРІЙ:</strong></td><td style="text-align: left">1. Користувач відкриває сторінку облікового запису <br/> 2. Система виводить інформацію облікового запису та інстументи для роботи з ним <br/> 3. Користувач натискає кнопку "Видалити обліковий запис" <br/> 4. Система видаляє обліковий запис та інформацію про нього <br/> 5. Система інформує користувача про успішне видалення та перенаправляє його на головну сторінку</td></tr>
-</tbody></table>
+<tr><td style="text-align: left"><strong>ОСНОВНИЙ СЦЕНАРІЙ:</strong></td><td style="text-align: left">1. Користувач відкриває сторінку облікового запису <br /> 2. Система виводить інформацію облікового запису та інстументи для роботи з ним <br /> 3. Користувач натискає кнопку “Видалити обліковий запис” <br /> 4. Система видаляє обліковий запис та інформацію про нього <br /> 5. Система інформує користувача про успішне видалення та перенаправляє його на головну сторінку</td></tr>
+</tbody>
+</table>
 </div>
-<hr />
+<hr>
 <h3 id="usercreaterequest"><a class="header" href="#usercreaterequest">UserCreateRequest</a></h3>
-<hr />
-<p><img src="//www.plantuml.com/plantuml/png/hLDDJZ914DttAJhp7U1pBOImqOGD9t0Z0TH4fyqux5Zme-32E8aXip0QmmtQ4HI16QzGTIDVzIWXAWiJIGZLzQfUl_UOAP-5-q7OEZbMRRgbZ3iquoxtk4y9MHwsbSFLjgPxd7k2qXpLIECdfOpUQCvzxT4OO98Jo9Yc5x80SV0A2kJZd9Ycj2JR5i8Rcia6JMI8hpIb03Dwv0kEqKmvrY38QC4H67mJDdHmT70Owd_DvXO-gbWhqHq6dcdXgAoc1CKS6zSyf1GDg9qvDvO777DK_5yhoPvNDHL_9mXCuBbMmwzhkK5jYi7fNLUBmdven7IsvhVm-xGsHVH0K-xWd41xXoFmO2j1Ou9lAjUlTFnzH1M_QQect3Kjl_vZL12uyW6wqTSC1j1rBY0jkUyo-9uisSy0CT956VEbF0YGjOeejnhj-MiN84NWifn795OSaSNI8e_g5SQVmEniIeKGCi0fbXszw8w1uZyfgCqlW3bLPRZ6I_8E" alt="Діаграма" /></p>
-<div class="table-wrapper"><table><thead><tr><th style="text-align: left"><strong>ID:</strong></th><th style="text-align: left">UserCreateRequest</th></tr></thead><tbody>
+<hr>
+<p><img src="/www.plantuml.com/plantuml/png/hLDDJZ914DttAJhp7U1pBOImqOGD9t0Z0TH4fyqux5Zme-32E8aXip0QmmtQ4HI16QzGTIDVzIWXAWiJIGZLzQfUl_UOAP-5-q7OEZbMRRgbZ3iquoxtk4y9MHwsbSFLjgPxd7k2qXpLIECdfOpUQCvzxT4OO98Jo9Yc5x80SV0A2kJZd9Ycj2JR5i8Rcia6JMI8hpIb03Dwv0kEqKmvrY38QC4H67mJDdHmT70Owd_DvXO-gbWhqHq6dcdXgAoc1CKS6zSyf1GDg9qvDvO777DK_5yhoPvNDHL_9mXCuBbMmwzhkK5jYi7fNLUBmdven7IsvhVm-xGsHVH0K-xWd41xXoFmO2j1Ou9lAjUlTFnzH1M_QQect3Kjl_vZL12uyW6wqTSC1j1rBY0jkUyo-9uisSy0CT956VEbF0YGjOeejnhj-MiN84NWifn795OSaSNI8e_g5SQVmEniIeKGCi0fbXszw8w1uZyfgCqlW3bLPRZ6I_8E" alt="Діаграма"></p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left"><strong>ID:</strong></th><th style="text-align: left">UserCreateRequest</th></tr>
+</thead>
+<tbody>
 <tr><td style="text-align: left"><strong>НАЗВА:</strong></td><td style="text-align: left">Створення запиту для аналізу медіа-контенту</td></tr>
 <tr><td style="text-align: left"><strong>УЧАСНИКИ:</strong></td><td style="text-align: left">Користувач, система</td></tr>
 <tr><td style="text-align: left"><strong>ПЕРЕДУМОВИ:</strong></td><td style="text-align: left">Користувач має обліковий запис та авторизований у нього</td></tr>
 <tr><td style="text-align: left"><strong>РЕЗУЛЬТАТ:</strong></td><td style="text-align: left">Запит створено</td></tr>
-<tr><td style="text-align: left"><strong>ВИКЛЮЧНІ СИТУАЦІЇ:</strong></td><td style="text-align: left">1. Користувач не авторизований у обліковий запис - NoInError <br/> 2. Користувач ввів не правильні дані - InfoNotFoundError</td></tr>
-<tr><td style="text-align: left"><strong>ОСНОВНИЙ СЦЕНАРІЙ:</strong></td><td style="text-align: left">1. Користувач натискає кнопку "Створити запит" <br/> 2. Система виводить необхідні поля <br/> 3. Користувач вводить дані про запит <br/> 4. Користувач натискає кнопку "Створити" <br/> 5. Система перевіряє введенні дані<br/> 6. Система створює запит<br/> 7. Система інформує користувача про успішне створення запиту та перенаправляє його на головну сторінку</td></tr>
-</tbody></table>
+<tr><td style="text-align: left"><strong>ВИКЛЮЧНІ СИТУАЦІЇ:</strong></td><td style="text-align: left">1. Користувач не авторизований у обліковий запис - NoInError <br /> 2. Користувач ввів не правильні дані - InfoNotFoundError</td></tr>
+<tr><td style="text-align: left"><strong>ОСНОВНИЙ СЦЕНАРІЙ:</strong></td><td style="text-align: left">1. Користувач натискає кнопку “Створити запит” <br /> 2. Система виводить необхідні поля <br /> 3. Користувач вводить дані про запит <br /> 4. Користувач натискає кнопку “Створити” <br /> 5. Система перевіряє введенні дані<br /> 6. Система створює запит<br /> 7. Система інформує користувача про успішне створення запиту та перенаправляє його на головну сторінку</td></tr>
+</tbody>
+</table>
 </div>
-<hr />
+<hr>
 <h3 id="userlevelupdate"><a class="header" href="#userlevelupdate">UserLevelUpdate</a></h3>
-<hr />
-<p><img src="//www.plantuml.com/plantuml/png/XLEzRXD14ExlAKR72r3RJGB29GMYT7FoRHmhvzrelHOKBk8S2XGeHWY5XX_n1aTams8xvrUOVIE-oHgma7zS-6xtc-zdPlUE1YwpRjWlai5PJvzdDklJu3JBpOkUxj99LWpK1fAhasnOkEVgfJikUbtTLzfH1t_ARbHfuzIZh7FMjMQeyyUcC9OUj5eFyVk_ojXSsNqLBQFT6XSKU3BYTppbPRZXkt0Jnk4oN70LBhaE5wFalfsamL_uE_jxu0FnN30ifRRaMso-vef0gOXleJFbkU22e5pAX2060CgsvfyaY-W5XINFi08TRvv0NuG9GQ66QOrzJs20x7dPHDnlqHga9LSZX7lFubM3wA7uDeg_4a-f25Tewvfu9OexmhUrs6zFTIZH_W4s-BCin13MSNmWrhoIML0gC4zZISnOIIZ2OxicdkdMANpb6S2Pd03oJ-2q8HSFH-8le8aPODVpBxI1WfL8xPXCCv5hGxRNFNL_xbI3-1CKVl22VGmhOdD8NuDo9tPZzgAodlwahTDdfb1Fh3KsHMyoHagVckDE1tVQnNtqy36s39tDz4qWL_-ED9H0zymdThlpfDSN0IfZNe7y1XAb32AgbN-DcuS-3NEU72cTusl_3G00" alt="Діаграма" /></p>
-<div class="table-wrapper"><table><thead><tr><th style="text-align: left"><strong>ID:</strong></th><th style="text-align: left">UserLevelUpdate</th></tr></thead><tbody>
+<hr>
+<p><img src="/www.plantuml.com/plantuml/png/XLEzRXD14ExlAKR72r3RJGB29GMYT7FoRHmhvzrelHOKBk8S2XGeHWY5XX_n1aTams8xvrUOVIE-oHgma7zS-6xtc-zdPlUE1YwpRjWlai5PJvzdDklJu3JBpOkUxj99LWpK1fAhasnOkEVgfJikUbtTLzfH1t_ARbHfuzIZh7FMjMQeyyUcC9OUj5eFyVk_ojXSsNqLBQFT6XSKU3BYTppbPRZXkt0Jnk4oN70LBhaE5wFalfsamL_uE_jxu0FnN30ifRRaMso-vef0gOXleJFbkU22e5pAX2060CgsvfyaY-W5XINFi08TRvv0NuG9GQ66QOrzJs20x7dPHDnlqHga9LSZX7lFubM3wA7uDeg_4a-f25Tewvfu9OexmhUrs6zFTIZH_W4s-BCin13MSNmWrhoIML0gC4zZISnOIIZ2OxicdkdMANpb6S2Pd03oJ-2q8HSFH-8le8aPODVpBxI1WfL8xPXCCv5hGxRNFNL_xbI3-1CKVl22VGmhOdD8NuDo9tPZzgAodlwahTDdfb1Fh3KsHMyoHagVckDE1tVQnNtqy36s39tDz4qWL_-ED9H0zymdThlpfDSN0IfZNe7y1XAb32AgbN-DcuS-3NEU72cTusl_3G00" alt="Діаграма"></p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left"><strong>ID:</strong></th><th style="text-align: left">UserLevelUpdate</th></tr>
+</thead>
+<tbody>
 <tr><td style="text-align: left"><strong>НАЗВА:</strong></td><td style="text-align: left">Заміна прав користувача на права адміністратора</td></tr>
 <tr><td style="text-align: left"><strong>УЧАСНИКИ:</strong></td><td style="text-align: left">Адміністратор, користувач, система</td></tr>
 <tr><td style="text-align: left"><strong>ПЕРЕДУМОВИ:</strong></td><td style="text-align: left">Користувач має обліковий запис</td></tr>
 <tr><td style="text-align: left"><strong>РЕЗУЛЬТАТ:</strong></td><td style="text-align: left">Система змінює користувачу права на адміністраторські</td></tr>
-<tr><td style="text-align: left"><strong>ВИКЛЮЧНІ СИТУАЦІЇ:</strong></td><td style="text-align: left">1. Користувач вже має права адміністратора - RoleError <br/>  2. Користувач не має облікового запису - NoAccountError</td></tr>
-<tr><td style="text-align: left"><strong>ОСНОВНИЙ СЦЕНАРІЙ:</strong></td><td style="text-align: left">1. Адміністратор обирає користувача та відкриває сторінку з інструментами для роботи з ним <br/> 2. Система виводить інформацію про користувача та інстументи для роботи з ним <br/> 3. Адміністратор натискає кнопку "Надати права адміністратора" <br/> 4. Система перевіряє права та обліковий запис користувача <br/> 5. Система змінює права <br/> 6. Система інформує адміністратора та користувача про успішну зміну прав</td></tr>
-</tbody></table>
+<tr><td style="text-align: left"><strong>ВИКЛЮЧНІ СИТУАЦІЇ:</strong></td><td style="text-align: left">1. Користувач вже має права адміністратора - RoleError <br />  2. Користувач не має облікового запису - NoAccountError</td></tr>
+<tr><td style="text-align: left"><strong>ОСНОВНИЙ СЦЕНАРІЙ:</strong></td><td style="text-align: left">1. Адміністратор обирає користувача та відкриває сторінку з інструментами для роботи з ним <br /> 2. Система виводить інформацію про користувача та інстументи для роботи з ним <br /> 3. Адміністратор натискає кнопку “Надати права адміністратора” <br /> 4. Система перевіряє права та обліковий запис користувача <br /> 5. Система змінює права <br /> 6. Система інформує адміністратора та користувача про успішну зміну прав</td></tr>
+</tbody>
+</table>
 </div>
-<hr />
+<hr>
 <h3 id="adminuserremove"><a class="header" href="#adminuserremove">AdminUserRemove</a></h3>
-<hr />
-<p><img src="//www.plantuml.com/plantuml/png/JCgz4O0W343XtYaOnPyLN2070Jb2uYNXT7mjQLxpljKSr4UdnLhb6nHwi0kIF9LBo426qqcOOP2V-Ff6jN17zX3_e4wAnN67s8hAu7G8YNw5aqzEma0KnlSznQHUm3LiT25BJy0EYBffJSEI1L23BWWOOrYfYJUe25gWj5TuSoD_ywZHe41NxNn_lc_UJCrHhNRCiyqAesOhsiUeXK6xn1qAxdNaNcQIsOcixSJsRDzs9R5zoMstu-bsl8gyo9ka2ZmQMJfCKkN6CcNnLXA3934onMScIuU3E3eqDNC1074za4-ZQPg5GoPplf3pbXhaApisEEI4vgod1WNYLB8gTLytqOWoIJgKUz2i766Aut1ZVgCbOTW1snePTLi1qLxPxvBZIsYXVlHo5VvlThZLlY5Mv5a_Y26z7E4QeyBDm_YwWHbDLb2WRNK5NFngwk-QWLfG4l-z1dfIEuPKk0qQaE5cGbNFtHeJNLrSjh-lLCN84-W7TVMCZIOioHjn4TREkwSd4PU-uthWduUdZGRtjtqMHM7aqtZmaszZrpdPDK4Sos8GUrA0tv4pr-1oS9mJGfAGEBhC4RZ5HAK9r78qY_BijQbxGysGKCT_xchrqDyHNdidhQ393_y5" alt="Діаграма" /></p>
-<div class="table-wrapper"><table><thead><tr><th style="text-align: left"><strong>ID:</strong></th><th style="text-align: left">AdminUserRemove</th></tr></thead><tbody>
+<hr>
+<p><img src="/www.plantuml.com/plantuml/png/JCgz4O0W343XtYaOnPyLN2070Jb2uYNXT7mjQLxpljKSr4UdnLhb6nHwi0kIF9LBo426qqcOOP2V-Ff6jN17zX3_e4wAnN67s8hAu7G8YNw5aqzEma0KnlSznQHUm3LiT25BJy0EYBffJSEI1L23BWWOOrYfYJUe25gWj5TuSoD_ywZHe41NxNn_lc_UJCrHhNRCiyqAesOhsiUeXK6xn1qAxdNaNcQIsOcixSJsRDzs9R5zoMstu-bsl8gyo9ka2ZmQMJfCKkN6CcNnLXA3934onMScIuU3E3eqDNC1074za4-ZQPg5GoPplf3pbXhaApisEEI4vgod1WNYLB8gTLytqOWoIJgKUz2i766Aut1ZVgCbOTW1snePTLi1qLxPxvBZIsYXVlHo5VvlThZLlY5Mv5a_Y26z7E4QeyBDm_YwWHbDLb2WRNK5NFngwk-QWLfG4l-z1dfIEuPKk0qQaE5cGbNFtHeJNLrSjh-lLCN84-W7TVMCZIOioHjn4TREkwSd4PU-uthWduUdZGRtjtqMHM7aqtZmaszZrpdPDK4Sos8GUrA0tv4pr-1oS9mJGfAGEBhC4RZ5HAK9r78qY_BijQbxGysGKCT_xchrqDyHNdidhQ393_y5" alt="Діаграма"></p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left"><strong>ID:</strong></th><th style="text-align: left">AdminUserRemove</th></tr>
+</thead>
+<tbody>
 <tr><td style="text-align: left"><strong>НАЗВА:</strong></td><td style="text-align: left">Видалення облікового запису</td></tr>
 <tr><td style="text-align: left"><strong>УЧАСНИКИ:</strong></td><td style="text-align: left">Адміністратор, користувач, система</td></tr>
 <tr><td style="text-align: left"><strong>ПЕРЕДУМОВИ:</strong></td><td style="text-align: left">Користувач має обліковий запис</td></tr>
 <tr><td style="text-align: left"><strong>РЕЗУЛЬТАТ:</strong></td><td style="text-align: left">Обліковий запис видалено</td></tr>
 <tr><td style="text-align: left"><strong>ВИКЛЮЧНІ СИТУАЦІЇ:</strong></td><td style="text-align: left">Користувач не має облікового запису - NoAccountError</td></tr>
-<tr><td style="text-align: left"><strong>ОСНОВНИЙ СЦЕНАРІЙ:</strong></td><td style="text-align: left">1. Адміністратор обирає користувача та відкриває сторінку з інструментами для роботи з ним <br/> 2. Система виводить інформацію облікового запису та інстументи для роботи з ним <br/> 3. Адміністратор натискає кнопку "Видалити обліковий запис" <br/> 4. Система видаляє обліковий запис та інформацію про нього <br/> 5. Система інформує адміністратора про успішне видалення та перенаправляє його на головну сторінку</td></tr>
-</tbody></table>
+<tr><td style="text-align: left"><strong>ОСНОВНИЙ СЦЕНАРІЙ:</strong></td><td style="text-align: left">1. Адміністратор обирає користувача та відкриває сторінку з інструментами для роботи з ним <br /> 2. Система виводить інформацію облікового запису та інстументи для роботи з ним <br /> 3. Адміністратор натискає кнопку “Видалити обліковий запис” <br /> 4. Система видаляє обліковий запис та інформацію про нього <br /> 5. Система інформує адміністратора про успішне видалення та перенаправляє його на головну сторінку</td></tr>
+</tbody>
+</table>
 </div>
-<hr />
-<div style="break-before: page; page-break-before: always;"></div><h1 id="Проєктування-бази-даних"><a class="header" href="#Проєктування-бази-даних">Проєктування бази даних</a></h1>
-<h3 id="Модель-бізнес-обєктів"><a class="header" href="#Модель-бізнес-обєктів">Модель бізнес-об'єктів</a></h3>
-<hr />
-<center>
-<p><img src="//www.plantuml.com/plantuml/png/XPNFRjim3CRlV0eknw0Ucg73TYnGRBS2m_uyW10nZX1ByYGQMJVqtJSsci4aX7ig_FleZ_f4re7xogxm50U0DsDnVNGukASyCTP8x9A3WNQCdB64Vi_eGw4jXvm0A77W9tmO0YK6pZtndWh-0SGpwMtmY5SmkKW6ZYuC1XvThSTSn0XG-NO-7rEtRWG1jRsXwYwcgfjTLJp3dFgxgmSpimZ_JdO1v3WNo9FpGqWaWGJeEFBSi4wY16LmBZxFH_oQ1pAFAC8y58MaqnNqLBSbZ3Bo2sMa4aEj8W3EfftiIxT-USR6TOPpHTkR1QeBTjCugoec_PoeyaDEkr2Y4oSpjL6dvcJhBjKZbUKQ3f40qDBKI2qPSA7fgo_Q9rbyxUhIbYxAkXoznufoiAZU741bsmRP0E2PkoMs9ePez3glKPb_L2gFLAlhoSojTCbkSgPVR2jj3JJJuzVDySfogKpvMsKIKFxnSNLxirvXz_APxd2rkTci_d-RJt-iYjD7OYuGr9gqwdQDInN6ee41hNTr3e1w26bqnKKSdVSXzVXHiPGzLHhnmws2nQM3mFSQnfpoTbzo9EGoaL8yxTmqyEUS-5luJRXvfyHFfw7AHdnf_Uy0yT6LFYIyauk-f-Jbj_8l" alt="Діаграма" /></p>
+<hr><div style="break-before: page; page-break-before: always;"></div>
+<h1 id="проєктування-бази-даних"><a class="header" href="#проєктування-бази-даних">Проєктування бази даних</a></h1>
+<h3 id="модель-бізнес-обєктів"><a class="header" href="#модель-бізнес-обєктів">Модель бізнес-об’єктів</a></h3>
+<hr><center>
+<p><img src="/www.plantuml.com/plantuml/png/XPNFRjim3CRlV0eknw0Ucg73TYnGRBS2m_uyW10nZX1ByYGQMJVqtJSsci4aX7ig_FleZ_f4re7xogxm50U0DsDnVNGukASyCTP8x9A3WNQCdB64Vi_eGw4jXvm0A77W9tmO0YK6pZtndWh-0SGpwMtmY5SmkKW6ZYuC1XvThSTSn0XG-NO-7rEtRWG1jRsXwYwcgfjTLJp3dFgxgmSpimZ_JdO1v3WNo9FpGqWaWGJeEFBSi4wY16LmBZxFH_oQ1pAFAC8y58MaqnNqLBSbZ3Bo2sMa4aEj8W3EfftiIxT-USR6TOPpHTkR1QeBTjCugoec_PoeyaDEkr2Y4oSpjL6dvcJhBjKZbUKQ3f40qDBKI2qPSA7fgo_Q9rbyxUhIbYxAkXoznufoiAZU741bsmRP0E2PkoMs9ePez3glKPb_L2gFLAlhoSojTCbkSgPVR2jj3JJJuzVDySfogKpvMsKIKFxnSNLxirvXz_APxd2rkTci_d-RJt-iYjD7OYuGr9gqwdQDInN6ee41hNTr3e1w26bqnKKSdVSXzVXHiPGzLHhnmws2nQM3mFSQnfpoTbzo9EGoaL8yxTmqyEUS-5luJRXvfyHFfw7AHdnf_Uy0yT6LFYIyauk-f-Jbj_8l" alt="Діаграма"></p>
 </center>
 <h3 id="er-модель"><a class="header" href="#er-модель">ER-модель</a></h3>
-<hr />
-<center>
-<p><img src="//www.plantuml.com/plantuml/png/bLF1QXH14BttLvHp4JI1pS7B72IISov1Fw2SgKoQdUaUksg9YmGs2fv43qB0lmW1CIIu-OMUN_1Bh9brOwyR5_QqNQ_ULBrzhtkV1ODCcjeyQWDM3KADKpyHu8O47PgQZWN4Gx3LYK1f0nLYlJE6nzQr6B21sZgIQKlWWvpufE5yIKmjx3qR9MX0DnxGqSYOnx2xkmilaSTmgEigQiW9n1_njhk8L_6oRviMYx6s8EjvVsaPl3C0Uh0o7KOCDS1JM-PWdVI5VZ_yE6me1vPWNJK09M6fmXKiKKXiGmgVcREbf1T5GSnmu9q4NqEyYtFeFiRlyMVtlfjr7rQ5BTX_o2kw3cghfssKDMZh5Q15vbCVoWHKcVSRZdnDsynlAJIMMKFynn0kWcqbnLD7UYkERMYmPwHXTUVnhfl5o_MuqY_-4ziHlPaGR-MFPfMcjadxsfvKqOQTwFYKGWwllQyVtfdEViKK3eaPgqqv2BsLZVyZzJf-ZNFrz5eVmho_SUhkRVT9JnUWqDMlsRVkYnvkuhNM46zw_vMb_UvSx-Vd8OVXIMIZdIUPbiyXszlPovRtCGTajfMZ4iIR1RZ67MvM3YV8vfuoD0RAG5xcbmEJAta3RSt-78f5gTCVwA_DI6tEeI970ONOxElYILF_1W00" alt="Діаграма" /></p>
+<hr><center>
+<p><img src="/www.plantuml.com/plantuml/png/bLF1QXH14BttLvHp4JI1pS7B72IISov1Fw2SgKoQdUaUksg9YmGs2fv43qB0lmW1CIIu-OMUN_1Bh9brOwyR5_QqNQ_ULBrzhtkV1ODCcjeyQWDM3KADKpyHu8O47PgQZWN4Gx3LYK1f0nLYlJE6nzQr6B21sZgIQKlWWvpufE5yIKmjx3qR9MX0DnxGqSYOnx2xkmilaSTmgEigQiW9n1_njhk8L_6oRviMYx6s8EjvVsaPl3C0Uh0o7KOCDS1JM-PWdVI5VZ_yE6me1vPWNJK09M6fmXKiKKXiGmgVcREbf1T5GSnmu9q4NqEyYtFeFiRlyMVtlfjr7rQ5BTX_o2kw3cghfssKDMZh5Q15vbCVoWHKcVSRZdnDsynlAJIMMKFynn0kWcqbnLD7UYkERMYmPwHXTUVnhfl5o_MuqY_-4ziHlPaGR-MFPfMcjadxsfvKqOQTwFYKGWwllQyVtfdEViKK3eaPgqqv2BsLZVyZzJf-ZNFrz5eVmho_SUhkRVT9JnUWqDMlsRVkYnvkuhNM46zw_vMb_UvSx-Vd8OVXIMIZdIUPbiyXszlPovRtCGTajfMZ4iIR1RZ67MvM3YV8vfuoD0RAG5xcbmEJAta3RSt-78f5gTCVwA_DI6tEeI970ONOxElYILF_1W00" alt="Діаграма"></p>
 </center>
-<h3 id="Реляційна-схема"><a class="header" href="#Реляційна-схема">Реляційна схема</a></h3>
-<hr />
-<center>
-<p><img src="2.png" alt="Діаграма" /></p>
+<h3 id="реляційна-схема"><a class="header" href="#реляційна-схема">Реляційна схема</a></h3>
+<hr><center>
+<p><img src="2.png" alt="Діаграма"></p>
 </center>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="Реалізація-інформаційного-та-програмного-забезпечення"><a class="header" href="#Реалізація-інформаційного-та-програмного-забезпечення">Реалізація інформаційного та програмного забезпечення</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="реалізація-інформаційного-та-програмного-забезпечення"><a class="header" href="#реалізація-інформаційного-та-програмного-забезпечення">Реалізація інформаційного та програмного забезпечення</a></h1>
 <h2 id="sql-скрипт-для-створення-на-початкового-наповнення-бази-даних"><a class="header" href="#sql-скрипт-для-створення-на-початкового-наповнення-бази-даних">SQL-скрипт для створення на початкового наповнення бази даних</a></h2>
 <pre><code class="language-SQL">-- MySQL Script generated by MySQL Workbench
 -- Mon May  5 15:19:11 2025
@@ -847,51 +956,47 @@ INSERT INTO `UserMessage` (`id`, `text`, `time`, `RequestConfirmation_id`, `Requ
 COMMIT;
 
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="Тестування-працездатності-системи"><a class="header" href="#Тестування-працездатності-системи">Тестування працездатності системи</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="тестування-працездатності-системи"><a class="header" href="#тестування-працездатності-системи">Тестування працездатності системи</a></h1>
 <h2 id="restfull-сервіс-для-управління-даними"><a class="header" href="#restfull-сервіс-для-управління-даними">RESTfull сервіс для управління даними</a></h2>
-<h2 id="Головна-сторінка"><a class="header" href="#Головна-сторінка">Головна сторінка</a></h2>
-<hr />
-<center>
-<p><img src="1.png" alt="Діаграма" /></p>
+<h2 id="головна-сторінка"><a class="header" href="#головна-сторінка">Головна сторінка</a></h2>
+<hr><center>
+<p><img src="1.1.png" alt="Діаграма"></p>
 </center>
 <h2 id="get-all---отримати-всі-завдання"><a class="header" href="#get-all---отримати-всі-завдання">GET ALL - отримати всі завдання</a></h2>
-<hr />
-<center>
-<p><img src="2(9).png" alt="Діаграма" /></p>
+<hr><center>
+<p><img src="2(9).png" alt="Діаграма"></p>
 </center>
 <h2 id="get-one---отримати-одне-завдання"><a class="header" href="#get-one---отримати-одне-завдання">GET ONE - отримати одне завдання</a></h2>
-<hr />
-<center>
-<p><img src="3.png" alt="Діаграма" /></p>
+<hr><center>
+<p><img src="3.png" alt="Діаграма"></p>
 </center>
 <h2 id="post---створити-завдання"><a class="header" href="#post---створити-завдання">POST - створити завдання</a></h2>
-<hr />
-<center>
-<p><img src="4.png" alt="Діаграма" /></p>
-<hr />
-<p><img src="5.png" alt="Діаграма" /></p>
-<hr />
-<p><img src="6.png" alt="Діаграма" /></p>
+<hr><center>
+<p><img src="4.png" alt="Діаграма"></p>
+<hr>
+<p><img src="5.png" alt="Діаграма"></p>
+<hr>
+<p><img src="6.png" alt="Діаграма"></p>
 </center>
 <h2 id="delete---видалити-завдання"><a class="header" href="#delete---видалити-завдання">DELETE - видалити завдання</a></h2>
-<hr />
-<center>
-<p><img src="7.png" alt="Діаграма" /></p>
-<hr />
-<p><img src="8.png" alt="Діаграма" /></p>
-<hr />
-<p><img src="2(9).png" alt="Діаграма" /></p>
+<hr><center>
+<p><img src="7.png" alt="Діаграма"></p>
+<hr>
+<p><img src="8.png" alt="Діаграма"></p>
+<hr>
+<p><img src="2(9).png" alt="Діаграма"></p>
 </center>
 <h2 id="put---змінити-завдання"><a class="header" href="#put---змінити-завдання">PUT - змінити завдання</a></h2>
-<hr />
-<center>
-<p><img src="10.png" alt="Діаграма" /></p>
-<hr />
-<p><img src="11.png" alt="Діаграма" /></p>
-<hr />
-<p><img src="12.png" alt="Діаграма" /></p>
+<hr><center>
+<p><img src="10.png" alt="Діаграма"></p>
+<hr>
+<p><img src="11.png" alt="Діаграма"></p>
+<hr>
+<p><img src="12.png" alt="Діаграма"></p>
 </center>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="Висновки-1"><a class="header" href="#Висновки-1">Висновки</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="висновки-1"><a class="header" href="#висновки-1">Висновки</a></h1>
 <p>У висновках наводять оцінку отриманих результатів, можливі галузі його використання. Висновки повинні містити в собі коротку узагальнену оцінку результатів розробки, у
 тому числі і з погляду на їх технічно-економічну ефективність. Необхідно порівняти
 отримані результати усіх характеристик об’єкта проєктування із завданням і з основними показниками сучасних аналогічних об’єктів.</p>
@@ -917,6 +1022,11 @@ COMMIT;
 
         </div>
 
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
 
 
 
@@ -925,13 +1035,13 @@ COMMIT;
         </script>
 
 
-        <script src="elasticlunr.min.js"></script>
-        <script src="mark.min.js"></script>
-        <script src="searcher.js"></script>
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-c2a407aa.js"></script>
 
-        <script src="clipboard.min.js"></script>
-        <script src="highlight.js"></script>
-        <script src="book.js"></script>
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-a0b12cfe.js"></script>
 
         <!-- Custom JS scripts -->
 
@@ -940,6 +1050,7 @@ COMMIT;
             window.setTimeout(window.print, 100);
         });
         </script>
+
 
     </div>
     </body>
