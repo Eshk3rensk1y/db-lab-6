@@ -1,6 +1,6 @@
 [book]
 language = "uk"
-multilingual = false
+title = "..."
 src = "docs"
 
 # Замініть авторство проєкта на своє
